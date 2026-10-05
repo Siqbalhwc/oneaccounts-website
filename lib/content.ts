@@ -10,14 +10,11 @@ export const SITE = {
   youtube: "https://www.youtube.com/@OneAccountsbySiqbal",
 }
 
-// Public prices stay hidden until Shahid confirms them (the live site says plans are being finalised).
-// Set to true to show the figures below on the home page and /pricing.
-export const PRICING_PUBLIC = false
-// Figures come from the app's plan table. Confirm before launch.
+// Public prices (confirmed by Shahid, Oct 2026). Add-ons are extra and priced separately.
 export const PRICING = {
-  service: { monthly: 3000, half: 16000, yearly: 30000 },
-  ngo: { monthly: 5000, half: 28000, yearly: 50000 },
-  addonMonthly: 500,
+  service: 3000, // Service and Trading, per user per month
+  ngo: 5000, // NGO and Construction, per user per month
+  property: 5000, // Property Management, per month
 }
 
 export type Solution = {
@@ -57,18 +54,19 @@ export const SOLUTIONS: Solution[] = [
     name: "Trading",
     h1: "Accounting and inventory software for trading businesses",
     metaTitle: "Trading Business Accounting & Inventory Software Pakistan | OneAccounts",
-    metaDesc: "Everything in service accounting plus live inventory, product search on invoices and bills, cash sales, returns and stock ledgers. Free trial.",
-    intro: "Trading is accounting plus stock. OneAccounts keeps the two in step, so what the shelf says and what the books say never drift apart.",
+    metaDesc: "Accounting plus inventory with a stock check on every sale and average costing. Product search on invoices and bills, cash sales, returns and stock ledgers. Free trial.",
+    intro: "Trading is accounting plus stock. OneAccounts checks available stock before you sell and values it on the average costing method, so what the shelf says and what the books say never drift apart.",
     points: [
-      { t: "Live stock", d: "Quantity is worked out from stock movements, never from a number someone typed." },
+      { t: "Stock check on every sale", d: "Invoices check available stock, so you do not sell what you do not have." },
+      { t: "Average costing", d: "Stock is valued on the average costing method, and cost of goods sold follows it." },
       { t: "Product search on invoices and bills", d: "Pick products as you type, with units of measurement and current quantity." },
       { t: "Cash sales", d: "Sell for cash directly, with partial payment and discount, without going through receivables." },
       { t: "Sales and purchase returns", d: "Returns reverse the stock and the accounts together." },
-      { t: "Aging reports", d: "Receivable and payable aging that includes opening balances and advances." },
       { t: "Product ledger", d: "Every movement of every product, in order, on screen and in PDF." },
     ],
     faq: [
-      { q: "Does stock update automatically when I post an invoice?", a: "Yes. Posting an invoice or bill writes a stock movement, and the quantity follows from the movements." },
+      { q: "Which costing method does OneAccounts use for stock?", a: "Average costing. Each purchase updates the average cost, and sales are costed at that average." },
+      { q: "Does it stop me selling stock I do not have?", a: "Yes. The system checks available stock when you enter a sale." },
       { q: "Can I import my products?", a: "Yes. CSV import and export is available, and we help you bring over opening balances." },
     ],
   },
@@ -96,19 +94,21 @@ export const SOLUTIONS: Solution[] = [
     slug: "construction-accounting-software",
     name: "Construction",
     h1: "Construction company accounting with site budgets and investor capital",
-    metaTitle: "Construction Accounting Software: Sites, Budgets, Investors | OneAccounts",
-    metaDesc: "Site-wise budgets checked on every bill, investor capital with percentage profit share, and full accounting. Built for construction and development companies.",
-    intro: "A site can have several investors, each with a share. OneAccounts tracks the budget per site and location, and the capital each investor has put in against their share.",
+    metaTitle: "Construction Accounting Software: Site Budgets & Investors | OneAccounts",
+    metaDesc: "Projects, activities and budgets for each site, with validation on every bill and invoice. Investor capital with percentage profit share. Built for construction companies.",
+    intro: "Set up each site as a project with its activities and a budget. Every bill and invoice is then validated against that site's budget before it posts, and investors are tracked by their share of each site.",
     points: [
-      { t: "Sites, locations and cost codes", d: "Organise spending the way a project actually runs." },
-      { t: "Site budgets", d: "Bills and invoices are checked against the site budget before they post." },
+      { t: "Projects (sites) and activities", d: "Organise spending by site, location and activity, the way a project actually runs." },
+      { t: "A budget for each site", d: "Budget by activity, location and account, so every site has its own limit." },
+      { t: "Budget validation", d: "Bills and invoices are checked against the site budget before they post." },
       { t: "Investor profit share", d: "Assign investors to a site by percentage, with the total held at exactly 100 percent." },
       { t: "Investor capital", d: "Target contribution from the site budget, with every contribution recorded and editable." },
-      { t: "Edit with a clean audit trail", d: "A corrected contribution reverses the old entry and posts a new one. Nothing is deleted." },
-      { t: "Construction dashboard", d: "Sites, spending and investors in one view." },
+      { t: "Construction dashboard", d: "Sites, spending against budget and investors in one view." },
     ],
     faq: [
+      { q: "Is the budget checked separately for every site?", a: "Yes. Each site has its own budget by activity, location and account, and every bill and invoice is validated against it." },
       { q: "Does editing an investor's percentage change the books?", a: "No. Profit share and capital contributed are kept separate, so changing a percentage never touches a journal entry." },
+      { q: "What if I correct a contribution?", a: "A corrected contribution reverses the old entry and posts a new one. Nothing is deleted, so the audit trail stays complete." },
     ],
   },
   {
@@ -116,18 +116,19 @@ export const SOLUTIONS: Solution[] = [
     name: "Inventory",
     h1: "Inventory management software connected to your accounts",
     metaTitle: "Inventory Management Software for Traders in Pakistan | OneAccounts",
-    metaDesc: "Stock register, live quantities, units of measurement, adjustments and a product ledger, all connected to sales, purchases and accounts.",
-    intro: "Stock that agrees with your accounts. Every quantity change is a recorded movement, so you can always see how a number came to be.",
+    metaDesc: "Stock register, stock check on every sale, average costing, units of measurement and a product ledger, all connected to sales, purchases and accounts.",
+    intro: "Stock that agrees with your accounts. Every quantity change is a recorded movement, stock is checked before you sell and valued on average cost, so you can always see how a number came to be.",
     points: [
       { t: "Stock register", d: "Products with units, opening quantity and live quantity on hand." },
-      { t: "One source of truth", d: "Every change writes a stock movement; the quantity follows from the movements." },
+      { t: "Stock check on sale", d: "Sales check available stock, so quantities never run below zero by accident." },
+      { t: "Average costing", d: "Stock is valued on the average costing method, and sales are costed at the average." },
       { t: "Adjustments", d: "Correct stock with a recorded adjustment, not by overwriting a number." },
       { t: "Product ledger", d: "Open any product and see every movement in order." },
       { t: "Material management", d: "Gate pass and store for companies that receive materials." },
-      { t: "Purchase orders", d: "Orders and receiving, tied to bills." },
     ],
     faq: [
-      { q: "Can quantity ever go negative?", a: "Quantity follows the recorded stock movements, and a simple check lets you confirm that no product has a negative quantity." },
+      { q: "Which costing method does it use?", a: "Average costing." },
+      { q: "Can quantity go negative?", a: "The system checks available stock on sales, and the quantity follows the recorded stock movements." },
     ],
   },
   {
@@ -187,8 +188,9 @@ export const MODULES = [
 ]
 
 export const PM_FEATURES = [
-  ["Buildings and apartments", "Floors, apartments and occupancy history."],
+  ["Buildings and rooms", "Floors, rooms and occupancy history."],
   ["Owners, tenants and leases", "Charges, roommates and facility details stay with the lease."],
+  ["Property reports", "Occupancy, rent, deposits and owner statements, straight from the books."],
   ["Rent invoicing", "Batch invoices and PDF receipts."],
   ["Security deposits", "Receive, hold and settle with deductions."],
   ["Expenses and staff", "Building expenses, staff and salary payments."],
@@ -200,11 +202,11 @@ export const PM_FEATURES = [
 
 export const HOME_FAQ = [
   { q: "Is there a free trial?", a: "Yes. New companies get a free trial with no credit card required, so you can be up and running the same day." },
-  { q: "What happens when my trial ends?", a: "Paid plans are being finalised and will appear directly in your dashboard. Existing users can already view plan options from there, and nothing will be charged without your say-so." },
+  { q: "What happens when my trial ends?", a: "You choose a plan from your dashboard. Service and Trading plans are Rs 3,000 per user per month, and NGO and Construction plans are Rs 5,000 per user per month, plus optional add-ons. Nothing is charged without your say-so." },
   { q: "Can I import my existing data?", a: "Yes. Our team can help you bring over your chart of accounts, opening balances, and historical transactions when you get started." },
   { q: "Is OneAccounts built for NGOs specifically, or just adapted?", a: "It is purpose-built for each business type. Trading, service, NGO and construction companies each get their own dashboard and tools: donor balances and budget tracking for NGOs, inventory and margins for trading, project billing for service organisations, and site budgets and investor capital for construction." },
-  { q: "Does OneAccounts support construction companies?", a: "Yes. Construction companies get sites and locations, budgets checked on every bill, and investor capital tracked against each investor's profit share." },
-  { q: "What is OneAccounts Property Management?", a: "A separate product for landlords, plazas and apartment buildings. It manages buildings, tenants, leases, rent invoices, security deposits and owner statements, with real double-entry accounting underneath. It runs at properties.oneaccountsbysiqbal.com." },
+  { q: "Does OneAccounts support construction companies?", a: "Yes. Each site has its own projects, activities and budget, every bill and invoice is validated against it, and investor capital is tracked against each investor's profit share." },
+  { q: "What is OneAccounts Property Management?", a: "A separate product for landlords, plazas and apartment buildings. It manages buildings, rooms, owners, tenants, leases, rent invoices, security deposits and owner statements, with real double-entry accounting underneath. It runs at properties.oneaccountsbysiqbal.com." },
   { q: "Is my data secure?", a: "Yes. Your data is encrypted in transit and at rest, and each company's records are fully isolated from every other company on OneAccounts." },
   { q: "How do I get help if I'm stuck?", a: "Reach us directly by email or WhatsApp. We usually reply within the day. You will find both in the footer." },
 ]

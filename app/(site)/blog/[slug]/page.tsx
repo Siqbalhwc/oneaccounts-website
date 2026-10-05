@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { getPost, getPosts, renderMd, fmtDate, readMins } from "@/lib/posts"
@@ -28,7 +27,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <>
       <JsonLd data={[ld, crumbLd([["Home", "/"], ["Guides", "/blog"], [p.title, `/blog/${p.slug}`]])]} />
       <header className="page-hero" style={{ paddingBottom: 30 }}><div className="sunrise-glow" /><div className="wrap">
-        <div className="crumb"><Link href="/">Home</Link> / <Link href="/blog">Guides</Link></div>
         <div className="eyebrow">{p.category || "Guide"}</div>
         <h1 style={{ fontSize: "clamp(30px,3.8vw,42px)" }}>{p.title}</h1>
         <p className="sub" style={{ marginBottom: 0 }}>{fmtDate(p.published_at)} &middot; {readMins(p.content_md)} min read</p>

@@ -59,3 +59,9 @@ git push -u origin main
 - "Start Free Trial" goes to `app.oneaccountsbysiqbal.com/login`, as on the current site.
 - Privacy and Terms are draft text. Please review them.
 - Clicking any in-page link brings that section to the middle of the screen (`components/AnchorScroll.tsx`).
+
+## Admin login troubleshooting
+If `/admin/login` sends you back to the login page, it now tells you why:
+- "not listed in ADMIN_EMAILS": fix the `ADMIN_EMAILS` value in Vercel (exact email, no spaces), then Deployments > Redeploy.
+- "sign-in was not kept": check `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in Vercel, then redeploy.
+Environment variable changes only take effect after a redeploy.

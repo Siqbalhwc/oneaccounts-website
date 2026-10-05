@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { ReactNode } from "react"
-import { SITE, PRICING, PRICING_PUBLIC, HOME_FAQ } from "@/lib/content"
+import { SITE, PRICING, HOME_FAQ } from "@/lib/content"
 import { IcCheck, IcSite, IcBag, IcHeart, IcBriefcase } from "@/components/icons"
 
 const rs = (n: number) => "Rs " + n.toLocaleString("en-PK")
@@ -9,7 +9,6 @@ export function PageHero({ eyebrow, title, sub, crumbs, children }: { eyebrow?: 
   return (
     <header className="page-hero"><div className="sunrise-glow" />
       <div className="wrap">
-        {crumbs && <div className="crumb">{crumbs.map(([t, h], i) => (<span key={t}>{i > 0 && " / "}{h ? <Link href={h}>{t}</Link> : t}</span>))}</div>}
         {eyebrow && <div className="eyebrow">{eyebrow}</div>}
         <h1>{title}</h1>
         {sub && <p className="sub">{sub}</p>}
@@ -31,10 +30,10 @@ export function SectionHead({ title, sub, tag }: { title: string; sub?: string; 
 
 export function IndustriesSection() {
   const cards = [
-    ["c1", "Trading Businesses", "Manage inventory, receivables, and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
+    ["c1", "Trading Businesses", "Manage inventory with a stock check on every sale and average costing, plus receivables and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
     ["c2", "NGOs", "Track donor balances, enforce budgets, and generate audit-ready reports in real time.", "/solutions/ngo-accounting-software", <IcHeart key="b" />],
     ["c3", "Service Organisations", "Bill clients accurately and see project profitability the moment it changes.", "/solutions/service-business-accounting", <IcBriefcase key="c" />],
-    ["c4", "Construction", "Control site budgets, track investor capital and profit share, and see every site's cost as it happens.", "/solutions/construction-accounting-software", <IcSite key="d" />],
+    ["c4", "Construction", "Give each site its own projects, activities and budget, validate every bill against it, and track investor capital and profit share.", "/solutions/construction-accounting-software", <IcSite key="d" />],
   ] as const
   return (
     <section className="industries" id="industries"><div className="wrap">
@@ -51,15 +50,17 @@ export function TypesSection({ tag }: { tag?: string }) {
   return (
     <section className="types" id="solutions"><div className="wrap">
       <SectionHead tag={tag} title="One book, shaped to the way you work" sub="Every company starts with full accounting. Your business type adds only what it needs." />
-      <div className="tbl-wrap"><table className="m"><tbody>
-        <tr><th></th><th>Service</th><th>Trading</th><th>NGO</th><th>Construction</th></tr>
-        <tr><td>Invoices, bills, receipts, payments</td>{Y}{Y}{Y}{Y}</tr>
-        <tr><td>Journal, ledgers, trial balance, P&amp;L, balance sheet</td>{Y}{Y}{Y}{Y}</tr>
-        <tr><td>Inventory and product search</td>{N}{Y}{N}{N}</tr>
-        <tr><td>Projects, activities, donor budgets</td>{N}{N}{Y}{N}</tr>
-        <tr><td>Sites, locations, investor capital</td>{N}{N}{N}{Y}</tr>
-        <tr><td>Budget check on every bill and invoice</td>{N}{N}{Y}{Y}</tr>
+      <div className="tbl-wrap"><table className="m wide"><tbody>
+        <tr><th></th><th>Service</th><th>Trading</th><th>NGO</th><th>Construction</th><th>Property Management</th></tr>
+        <tr><td>Invoices, bills, receipts, payments</td>{Y}{Y}{Y}{Y}{Y}</tr>
+        <tr><td>Journal entries, ledgers, trial balance, P&amp;L, balance sheet</td>{Y}{Y}{Y}{Y}{Y}</tr>
+        <tr><td>Inventory with stock check and average costing</td>{N}{Y}{N}{N}{N}</tr>
+        <tr><td>Projects (sites), activities and budgets</td>{N}{N}{Y}{Y}{N}</tr>
+        <tr><td>Budget validation on every bill and invoice</td>{N}{N}{Y}{Y}{N}</tr>
+        <tr><td>Sites, locations and investor capital</td>{N}{N}{N}{Y}{N}</tr>
+        <tr><td>Buildings, rooms, owners, tenants and leases, with their reports</td>{N}{N}{N}{N}{Y}</tr>
       </tbody></table></div>
+      <p className="tbl-note">Property Management is a separate app at properties.oneaccountsbysiqbal.com, with the same accounting core.</p>
       <div className="trail"><small>Every number can be traced</small><span>Balance sheet</span><span>Trial balance</span><span>Ledger</span><span>Journal entry</span><span>The original document</span></div>
     </div></section>
   )
@@ -72,11 +73,11 @@ export function AppsSection({ tag }: { tag?: string }) {
       <div className="apps-grid">
         <div className="app-card d"><div className="host">app.oneaccountsbysiqbal.com</div><h3>OneAccounts</h3>
           <p>Cloud accounting and ERP for trading, service, NGO and construction businesses.</p>
-          <ul><li>Invoices, bills, receipts, payments</li><li>Inventory, payroll, fixed assets</li><li>Projects, budgets and site control</li></ul>
+          <ul><li>Invoices, bills, receipts, payments</li><li>Inventory, payroll, fixed assets</li><li>Projects, budgets and validation per site</li></ul>
           <div className="acts"><a className="btn-light" href={`${SITE.app}/login`} target="_blank" rel="noopener">Open OneAccounts</a><Link className="btn-secondary" style={{ color: "#fff", borderColor: "#fff" }} href="/oneaccounts">Learn more</Link></div></div>
         <div className="app-card"><div className="host">properties.oneaccountsbysiqbal.com</div><h3>Property Management</h3>
           <p>Rent, leases and owner accounts for landlords, plazas and apartment buildings.</p>
-          <ul><li>Buildings, apartments, tenants, leases</li><li>Security deposits and settlement</li><li>Owner ledger with full accounting</li></ul>
+          <ul><li>Buildings, rooms, owners, tenants, leases</li><li>Security deposits and settlement</li><li>Owner ledger with full accounting</li></ul>
           <div className="acts"><a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener">Open Property Management</a><Link className="btn-secondary" href="/property-management">Learn more</Link></div></div>
       </div>
     </div></section>
@@ -94,7 +95,7 @@ export function PropertySection({ tag }: { tag?: string }) {
         <Link href="/property-management" className="btn-primary"><span className="play">&rarr;</span> Explore Property Management</Link>
       </div>
       <div>
-        <div className="step"><i>1</i><div><b>Building, floor, apartment</b><span>Organise the portfolio the way managers think of it.</span></div></div>
+        <div className="step"><i>1</i><div><b>Building, floor, room</b><span>Organise the portfolio the way managers think of it.</span></div></div>
         <div className="step"><i>2</i><div><b>Owner, tenant, lease</b><span>Charges, roommates and facilities stay with the lease.</span></div></div>
         <div className="step"><i>3</i><div><b>Rent invoice, receipt, security deposit</b><span>Batch invoicing, PDF receipts and deposit settlement.</span></div></div>
         <div className="step"><i>4</i><div><b>Owner ledger, profit and loss</b><span>Statements and payouts, straight from the books.</span></div></div>
@@ -116,28 +117,23 @@ export function HowSection() {
   )
 }
 
-export function PricingBox() {
+export function PricingBox({ showHead = true }: { showHead?: boolean }) {
+  const rs = (n: number) => "Rs " + n.toLocaleString("en-PK")
   return (
     <section className="pricing" id="pricing"><div className="wrap">
-      <div className="pricing-box">
-        <h2>Simple, transparent pricing</h2>
-        {PRICING_PUBLIC ? (
-          <>
-            <p>Per user, per month. Longer billing periods cost less per month.</p>
-            <div className="tbl-wrap" style={{ marginBottom: 28, textAlign: "left" }}><table className="m"><tbody>
-              <tr><th>Plan</th><th>Monthly</th><th>6 months</th><th>Yearly</th></tr>
-              <tr><td>Service and Trading</td><td>{rs(PRICING.service.monthly)}</td><td>{rs(PRICING.service.half)}</td><td>{rs(PRICING.service.yearly)}</td></tr>
-              <tr><td>NGO and Construction</td><td>{rs(PRICING.ngo.monthly)}</td><td>{rs(PRICING.ngo.half)}</td><td>{rs(PRICING.ngo.yearly)}</td></tr>
-            </tbody></table></div>
-          </>
-        ) : (
-          <>
-            <p>Start with a free trial, no credit card needed. Paid plans are being finalised and will appear in your dashboard once your trial is active.</p>
-            <div className="pricing-note">Currently available to trial companies</div>
-          </>
-        )}
-        <div className="pricing-ctas"><TrialBtn /><a href={`${SITE.app}/dashboard/upgrade`} target="_blank" rel="noopener" className="btn-secondary">View Plans (existing users)</a></div>
+      {showHead && <SectionHead title="Simple, transparent pricing" sub="Start with a free trial, no credit card needed. Then pay per user, per month, plus any add-ons you choose." />}
+      <div className="pg">
+        <div className="pp"><h3>Service and Trading</h3><div className="big">{rs(PRICING.service)}</div><small>per user, per month</small><div className="plus-note">+ add-ons if any</div>
+          <ul><li>Invoices, bills, receipts, payments</li><li>Journal, ledgers and all core reports</li><li>Trading adds inventory with stock check and average costing</li></ul>
+          <TrialBtn /></div>
+        <div className="pp f"><span className="tag">NGO and Construction</span><h3>Projects and budgets</h3><div className="big">{rs(PRICING.ngo)}</div><small>per user, per month</small><div className="plus-note">+ add-ons if any</div>
+          <ul><li>Everything in Service and Trading</li><li>Projects, activities and budgets</li><li>Budget validation on every bill and invoice</li><li>Construction: sites and investor capital</li></ul>
+          <a className="btn-light" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start Free Trial</a></div>
+        <div className="pp"><h3>Property Management</h3><div className="big">{rs(PRICING.property)}</div><small>per month</small><div className="plus-note">+ add-ons if any</div>
+          <ul><li>Buildings, rooms, owners, tenants, leases</li><li>Rent, deposits and owner ledger</li><li>Full accounting and reports</li></ul>
+          <a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener"><span className="play">&rarr;</span> Open Property App</a></div>
       </div>
+      <p className="tbl-note" style={{ textAlign: "center" }}>Add-ons such as Payroll are optional and priced separately. Existing users can see their plan options inside the dashboard.</p>
     </div></section>
   )
 }

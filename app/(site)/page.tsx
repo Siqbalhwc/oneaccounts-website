@@ -24,7 +24,7 @@ export default function Home() {
             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-secondary">Start Free Trial</a>
           </div>
           <div className="hero-meta">No credit card required &middot; Free trial for new companies</div>
-          <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts</a> &middot; <a href={SITE.properties} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
+          <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts ERP</a> &middot; <a href={SITE.properties} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
           <Arc />
         </div>
       </section>

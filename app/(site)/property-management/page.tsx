@@ -9,7 +9,7 @@ const FAQ = [
   { q: "Does it include accounting reports?", a: "Yes. It includes the chart of accounts, journal, ledger, trial balance, profit and loss and balance sheet, along with an owner ledger." },
   { q: "Can I import my existing tenants and units?", a: "Yes. Excel templates are available for bulk import, and you can back up and restore your data." },
 ]
-export const metadata = meta("Property Management Software in Pakistan | OneAccounts", "Buildings, tenants, leases, rent invoices, security deposits and owner statements, posted into real double-entry accounting. Built for landlords and building managers.", "/property-management")
+export const metadata = meta("Property Management Software in Pakistan | OneAccounts", "Buildings, rooms, owners, tenants, leases, rent invoices, deposits and owner statements, posted into real double-entry accounting. Built for landlords and building managers.", "/property-management")
 
 export default function Page() {
   return (
