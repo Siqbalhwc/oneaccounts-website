@@ -249,6 +249,7 @@
   .prose ul,.prose ol{padding-left:22px;margin-bottom:18px}.prose li{margin:6px 0}.prose blockquote{border-left:4px solid var(--gold);margin:24px 0;padding:4px 20px;color:var(--ink-soft)}
   .prose table{border-collapse:collapse;width:100%;font-size:15px;margin-bottom:18px}.prose th,.prose td{border:1px solid var(--hairline);padding:9px 12px;text-align:left}.prose th{background:var(--cream)}
   .prose code{background:rgba(11,10,92,.06);padding:2px 6px;border-radius:4px;font-size:.9em}
+  .prose img{max-width:100%;height:auto;border-radius:9px;margin:8px 0 22px}.prose h2,.prose h3{scroll-margin-top:90px}
   .form{display:grid;gap:14px}.form label{font-size:13px;font-weight:600;color:var(--navy);display:grid;gap:6px}
   .form input,.form textarea,.form select{font:inherit;font-size:15px;padding:12px 14px;border:1px solid rgba(11,10,92,.2);border-radius:9px;background:#fff;color:var(--ink)}
   .form input:focus,.form textarea:focus,.form select:focus{outline:2px solid var(--gold);outline-offset:1px}.form textarea{min-height:120px}

@@ -1,5 +1,6 @@
 import { publicClient } from "@/lib/supabase/public"
-import { marked } from "marked"
+import { renderMd } from "@/lib/markdown"
+export { renderMd }
 
 export type Post = {
   id: string; slug: string; title: string; excerpt: string | null; content_md: string
@@ -22,6 +23,5 @@ export async function getPost(slug: string): Promise<Post | null> {
   const { data } = await sb.from("posts").select(COLS).eq("slug", slug).eq("status", "published").maybeSingle()
   return (data as Post) || null
 }
-export const renderMd = (md: string) => marked.parse(md, { async: false }) as string
 export const fmtDate = (d: string | null) => d ? new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : ""
 export const readMins = (md: string) => Math.max(1, Math.round(md.split(/\s+/).length / 200))
