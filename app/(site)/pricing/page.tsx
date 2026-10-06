@@ -4,17 +4,16 @@ import { PageHero, PricingBox, FaqSection, CtaBand } from "@/components/Sections
 
 const FAQ = [
   { q: "Is there a free trial?", a: "Yes. New companies get a free trial with no credit card required." },
-  { q: "How much does it cost?", a: "Service and Trading companies pay Rs 3,000 per user per month. NGO and Construction companies pay Rs 5,000 per user per month. Property Management is Rs 5,000 per month. Add-ons are extra, if you choose any." },
-  { q: "What are add-ons?", a: "Optional modules such as Payroll, which you can switch on only when you need them." },
+  { q: "How will pricing work?", a: "Pricing is per user. After you start your free trial, your dashboard shows the plans and prices for your business type. Nothing is charged without your say-so." },
   { q: "Can I try Property Management too?", a: "Yes. Ask us on WhatsApp or through the contact form and we will set up a trial for your building." },
 ]
-export const metadata = meta("Pricing: Cloud Accounting & ERP Software | OneAccounts", "Service and Trading from Rs 3,000 per user per month. NGO and Construction from Rs 5,000. Property Management from Rs 5,000. Free trial, no credit card.", "/pricing")
+export const metadata = meta("Pricing: Cloud Accounting & ERP Software | OneAccounts", "Start a free trial of OneAccounts with no credit card. Your dashboard shows plans and pricing for your business type once you are in.", "/pricing")
 
 export default function Page() {
   return (
     <>
       <JsonLd data={faqLd(FAQ)} />
-      <PageHero eyebrow="Pricing" crumbs={[["Home", "/"], ["Pricing"]]} title="Simple, transparent pricing" sub="Service and Trading from Rs 3,000. NGO, Construction and Property Management from Rs 5,000. Add-ons are extra, if any." />
+      <PageHero eyebrow="Pricing" crumbs={[["Home", "/"], ["Pricing"]]} title="Simple, transparent pricing" sub="Start free. Your dashboard shows the plans and pricing for your business type." />
       <PricingBox showHead={false} />
       <FaqSection items={FAQ} title="About pricing" sub="Short answers." />
       <CtaBand />

@@ -9,7 +9,7 @@ function Form() {
   const e = q.get("e"), u = q.get("u")
   const note =
     e === "denied" ? `You are signed in as ${u}, but that email is not listed in ADMIN_EMAILS in Vercel. Add it there (exactly as written) and redeploy.` :
-    e === "noenv" ? "ADMIN_EMAILS is not set in Vercel. Add it and redeploy." :
+    e === "noenv" ? `Vercel cannot see ADMIN_EMAILS (missing: ${q.get("m") || "ADMIN_EMAILS"}). Check the name is exactly ADMIN_EMAILS, that Production is ticked, then redeploy.` :
     e === "session" ? "The sign-in was not kept. Please try once more. If it repeats, check the Supabase URL and anon key in Vercel." : ""
   async function go(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault(); setBusy(true); setErr("")

@@ -10,6 +10,10 @@ export const IcCheck = () => (<svg {...S}><path d="m5 12 4.5 4.5L19 7" /></svg>)
 export const IcPlay = () => (<svg {...S} fill="none"><path d="m10 8 6 4-6 4V8Z" /><rect x="2" y="5" width="20" height="14" rx="3" /></svg>)
 export const IcMail = () => (<svg {...S} fill="none"><path d="M22 6 12 13 2 6" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>)
 export const IcPhone = () => (<svg {...S} fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z" /></svg>)
+export const IcClock = () => (<svg {...S}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>)
+export const IcCoin = () => (<svg {...S}><circle cx="12" cy="12" r="9" /><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1.1 0-2-.4-2.5-1.2M12 6v2M12 16v2" /></svg>)
+export const IcMobile = () => (<svg {...S}><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18.5h2" /></svg>)
+export const IcChart = () => (<svg {...S}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>)
 export const Arc = () => (
   <svg className="arc-line" viewBox="0 0 600 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M10 8 C 190 48, 410 48, 590 8" stroke="url(#arcGrad)" strokeWidth="1.5" strokeLinecap="round" />

@@ -3,7 +3,7 @@ import Link from "next/link"
 import dash from "@/assets/ngo-dashboard.png"
 import { SITE, HOME_FAQ } from "@/lib/content"
 import { JsonLd, softwareLd, faqLd } from "@/lib/seo"
-import { Arc, IcReceipt, IcBox, IcPeople } from "@/components/icons"
+import { Arc, IcReceipt, IcBox, IcPeople, IcClock, IcCoin, IcMobile } from "@/components/icons"
 import { IndustriesSection, TypesSection, AppsSection, PropertySection, HowSection, PricingBox, FaqSection, CtaBand } from "@/components/Sections"
 import LatestPosts from "@/components/LatestPosts"
 
@@ -39,8 +39,11 @@ export default function Home() {
       </div></section>
 
       <section className="pillars" id="features"><div className="wrap">
-        <div className="pillars-head"><h2>What OneAccounts gives you</h2><p>Not more features. Fewer things to worry about.</p></div>
+        <div className="pillars-head"><h2>Less time on the books. More time on your business.</h2><p>Here is what you gain the day you start.</p></div>
         <div className="pillars-grid">
+          <div className="pillar"><div className="mark"><IcClock /></div><h3>Get your time back</h3><p>Post an invoice, bill or payment in seconds. Reports update the moment you save, so month-end stops being a project.</p></div>
+          <div className="pillar"><div className="mark"><IcCoin /></div><h3>Run it yourself, save the cost</h3><p>It is easy enough for anyone on your team. No full-time accountant for daily bookkeeping, and no chasing for follow-ups.</p></div>
+          <div className="pillar"><div className="mark"><IcMobile /></div><h3>Your business in your pocket</h3><p>A smooth mobile experience lets you work from your phone, anywhere in the world, at any time. Peace of mind wherever you are.</p></div>
           <div className="pillar"><div className="mark"><IcReceipt /></div><h3>Know exactly where you stand</h3><p>Accounting that answers the question before you have to ask it.</p></div>
           <div className="pillar"><div className="mark"><IcBox /></div><h3>Never wonder what&apos;s in stock</h3><p>Inventory you can trust, down to the last unit, in real time.</p></div>
           <div className="pillar"><div className="mark"><IcPeople /></div><h3>Pay everyone accurately, on time</h3><p>Payroll and banking that reconcile themselves quietly in the background.</p></div>

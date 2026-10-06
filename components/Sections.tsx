@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { ReactNode } from "react"
-import { SITE, PRICING, HOME_FAQ } from "@/lib/content"
+import { SITE, PRICING, PRICING_PUBLIC, HOME_FAQ } from "@/lib/content"
 import { IcCheck, IcSite, IcBag, IcHeart, IcBriefcase } from "@/components/icons"
 
 const rs = (n: number) => "Rs " + n.toLocaleString("en-PK")
@@ -117,7 +117,7 @@ export function HowSection() {
   )
 }
 
-export function PricingBox({ showHead = true }: { showHead?: boolean }) {
+function PriceCards({ showHead }: { showHead: boolean }) {
   const rs = (n: number) => "Rs " + n.toLocaleString("en-PK")
   return (
     <section className="pricing" id="pricing"><div className="wrap">
@@ -134,6 +134,21 @@ export function PricingBox({ showHead = true }: { showHead?: boolean }) {
           <a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener"><span className="play">&rarr;</span> Open Property App</a></div>
       </div>
       <p className="tbl-note" style={{ textAlign: "center" }}>Add-ons such as Payroll are optional and priced separately. Existing users can see their plan options inside the dashboard.</p>
+    </div></section>
+  )
+}
+
+export function PricingBox({ showHead = true }: { showHead?: boolean }) {
+  if (PRICING_PUBLIC) return <PriceCards showHead={showHead} />
+  return (
+    <section className="pricing" id="pricing"><div className="wrap">
+      <div className="pricing-box">
+        <h2>Simple, transparent pricing</h2>
+        <p>Start your free trial, no credit card needed. Once you are in, your dashboard shows the plans and pricing for your business type.</p>
+        <div className="pricing-note">Plans and pricing are shown inside your free trial</div>
+        <div className="pricing-ctas"><TrialBtn /><a href={`${SITE.app}/dashboard/upgrade`} target="_blank" rel="noopener" className="btn-secondary">View Plans (existing users)</a></div>
+        <p style={{ marginTop: 22, fontSize: 13.5 }}>Looking at Property Management? <a href={SITE.whatsapp} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600, textDecoration: "underline" }}>Ask us on WhatsApp</a> for a trial.</p>
+      </div>
     </div></section>
   )
 }
