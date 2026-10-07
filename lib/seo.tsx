@@ -14,7 +14,11 @@ export const softwareLd = () => ({
   "@context": "https://schema.org", "@type": "SoftwareApplication", name: "OneAccounts",
   applicationCategory: "BusinessApplication", operatingSystem: "Web", url: SITE.url,
   description: "Cloud ERP for growing businesses and NGOs: accounting, inventory, and payroll that stay clear, current, and calm.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "PKR", description: "Free trial, no credit card required" },
+  offers: [
+    { "@type": "Offer", name: "Free trial", price: "0", priceCurrency: "PKR", description: "Free trial, no credit card required" },
+    { "@type": "Offer", name: "Service and Trading", priceCurrency: "PKR", priceSpecification: { "@type": "UnitPriceSpecification", price: "3000", priceCurrency: "PKR", unitText: "per user per month" } },
+    { "@type": "Offer", name: "NGO and Construction", priceCurrency: "PKR", priceSpecification: { "@type": "UnitPriceSpecification", price: "5000", priceCurrency: "PKR", unitText: "per user per month" } },
+  ],
   publisher: { "@type": "Organization", name: "Siqbal", url: SITE.url },
 })
 export const faqLd = (faq: { q: string; a: string }[]) => ({

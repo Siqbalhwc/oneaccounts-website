@@ -10,9 +10,9 @@ export const SITE = {
   youtube: "https://www.youtube.com/@OneAccountsbySiqbal",
 }
 
-// Prices are shown to users INSIDE their free trial, not on the public site (Shahid, Oct 5 2026).
-// Set PRICING_PUBLIC = true to show the three price cards on the home page and /pricing.
-export const PRICING_PUBLIC = false
+// Prices are shown publicly on the home page and /pricing (Shahid, Oct 2026: experts advise showing prices up front).
+// Set PRICING_PUBLIC = false to hide them again and show the "see plans inside your trial" box instead.
+export const PRICING_PUBLIC = true
 // Confirmed prices (Oct 2026). Add-ons are extra and priced separately.
 export const PRICING = {
   service: 3000, // Service and Trading, per user per month
@@ -142,7 +142,7 @@ export const SOLUTIONS: Solution[] = [
     metaDesc: "Cloud accounting and ERP in rupees, with withholding tax, payroll, inventory, WhatsApp invoices and support on WhatsApp. Start a free trial.",
     intro: "Built in Pakistan, priced in rupees and supported on WhatsApp. Tax and withholding are handled inside the entry, so the journal comes out right the first time.",
     points: [
-      { t: "Priced in rupees", d: "Simple per-user pricing. Your dashboard shows the plans and prices for your business type once your free trial starts." },
+      { t: "Priced in rupees", d: "Simple pricing in rupees: Rs 3,000 per user per month for Service and Trading, and Rs 5,000 per user per month for NGO and Construction." },
       { t: "Withholding tax", d: "Enter the amount that left the bank. The tax is worked out and both sides are posted." },
       { t: "Payroll", d: "Attendance, leave, loans, advances, approvals and payslips." },
       { t: "CSV and Excel import", d: "Bring your customers, suppliers and products in from a file." },
@@ -205,7 +205,8 @@ export const PM_FEATURES = [
 
 export const HOME_FAQ = [
   { q: "Is there a free trial?", a: "Yes. New companies get a free trial with no credit card required, so you can be up and running the same day." },
-  { q: "What happens when my trial ends?", a: "You choose a plan from your dashboard, which shows the plans and prices for your business type. Nothing is charged without your say-so." },
+  { q: "What happens when my trial ends?", a: "You choose a plan from your dashboard. Service and Trading plans are Rs 3,000 per user per month, NGO and Construction plans are Rs 5,000 per user per month, and Property Management is Rs 5,000 per month, plus optional add-ons. Nothing is charged without your say-so." },
+  { q: "How much does OneAccounts cost?", a: "Service and Trading companies pay Rs 3,000 per user per month. NGO and Construction companies pay Rs 5,000 per user per month. Property Management is Rs 5,000 per month. Optional add-ons such as Payroll are extra. Every new company starts with a free trial and no credit card." },
   { q: "Do I need an accountant to use OneAccounts?", a: "OneAccounts is built so that anyone on your team can run day-to-day bookkeeping: invoices, bills, payments and reports. That saves the cost of a full-time accountant and the follow-ups that come with one. You may still want a professional for tax filing and audits." },
   { q: "Can I run my business from my phone?", a: "Yes. OneAccounts runs in your browser and the mobile layout is designed for phones, so you can create invoices, record payments and check balances from anywhere, at any time." },
   { q: "Can I import my existing data?", a: "Yes. Our team can help you bring over your chart of accounts, opening balances, and historical transactions when you get started." },

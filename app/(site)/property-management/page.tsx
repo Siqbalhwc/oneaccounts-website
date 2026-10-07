@@ -14,7 +14,7 @@ export const metadata = meta("Property Management Software in Pakistan | OneAcco
 export default function Page() {
   return (
     <>
-      <JsonLd data={[crumbLd([["Home", "/"], ["Property Management", "/property-management"]]), { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "OneAccounts Property Management", applicationCategory: "BusinessApplication", operatingSystem: "Web", url: `${SITE.url}/property-management`, description: "Property management and rental accounting software for landlords and building managers." }]} />
+      <JsonLd data={[crumbLd([["Home", "/"], ["Property Management", "/property-management"]]), { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "OneAccounts Property Management", applicationCategory: "BusinessApplication", operatingSystem: "Web", url: `${SITE.url}/property-management`, description: "Property management and rental accounting software for landlords and building managers.", offers: { "@type": "Offer", name: "Property Management", priceCurrency: "PKR", priceSpecification: { "@type": "UnitPriceSpecification", price: "5000", priceCurrency: "PKR", unitText: "per month" } } }]} />
       <PageHero eyebrow="OneAccounts Property Management" crumbs={[["Home", "/"], ["Property Management"]]} title="From the building to the owner's statement" sub="Property operations and real double-entry accounting in one place, so rent collected is already in the books.">
         <a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener"><span className="play">&rarr;</span> Open Property Management</a><a className="btn-secondary" href={SITE.whatsapp} target="_blank" rel="noopener">Ask us on WhatsApp</a>
       </PageHero>
