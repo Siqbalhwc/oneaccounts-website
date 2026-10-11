@@ -6,6 +6,7 @@ import { JsonLd, softwareLd, faqLd } from "@/lib/seo"
 import { Arc, IcReceipt, IcBox, IcPeople, IcClock, IcCoin, IcMobile } from "@/components/icons"
 import { IndustriesSection, TypesSection, AppsSection, PropertySection, HowSection, PricingBox, FaqSection, CtaBand } from "@/components/Sections"
 import LatestPosts from "@/components/LatestPosts"
+import Testimonials from "@/components/Testimonials"
 import ScreenshotGallery from "@/components/ScreenshotGallery"
 import VideoShowcase from "@/components/VideoShowcase"
 import { getMedia } from "@/lib/media"
@@ -21,14 +22,14 @@ export default async function Home() {
       <section className="hero">
         <div className="sunrise-glow" />
         <div className="wrap">
-          <div className="eyebrow">Peace of mind, built in</div>
+          <div className="eyebrow">Cloud Accounting &amp; ERP Software for Pakistan &middot; NGO &middot; Property Management</div>
           <h1>Simple by Design. Professional by Nature.</h1>
-          <p className="sub">OneAccounts keeps your accounting, inventory, and payroll clear, current, and calm, so you always know where things stand.</p>
+          <p className="sub">Accounting, inventory and payroll for traders, NGOs, construction companies and property managers, with PKR and Pakistani tax built in.</p>
           <div className="hero-ctas">
-            <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-primary"><span className="play">&#9654;</span> Watch the Demo</a>
-            <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-secondary">Start Free Trial</a>
+            <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>
+            <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-secondary">&#9654; Watch the Demo</a>
           </div>
-          <div className="hero-meta">No credit card required &middot; Free trial for new companies</div>
+          <ul className="hero-trust"><li>10-day free trial</li><li>No credit card required</li><li>Free help bringing your opening balances</li></ul>
           <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts ERP</a> &middot; <a href={SITE.propertiesLogin} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
           <Arc />
         </div>
@@ -82,6 +83,7 @@ export default async function Home() {
       </div></section>
 
       <HowSection />
+      <Testimonials />
       <PricingBox />
       <LatestPosts />
       <FaqSection />
