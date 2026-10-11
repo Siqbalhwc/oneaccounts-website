@@ -19,7 +19,7 @@ export default function SiteFooter() {
           <Link href="/pricing">Pricing</Link>
           <Link href="/blog">Guides</Link>
           <a href={`${SITE.app}/login`} target="_blank" rel="noopener">ERP login</a>
-          <a href={SITE.properties} target="_blank" rel="noopener">Property login</a>
+          <a href={SITE.propertiesLogin} target="_blank" rel="noopener">Property login</a>
         </div>
         <div className="foot-col">
           <div className="foot-col-title">Industries</div>

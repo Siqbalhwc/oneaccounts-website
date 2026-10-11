@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react"
+import { useRef, useState } from "react"
+import PictureUpload from "@/components/PictureUpload"
 import { savePost, deletePost } from "@/app/admin/actions"
 import { renderMd } from "@/lib/markdown"
 import SeoFields from "@/components/SeoFields"
@@ -12,6 +13,7 @@ export default function PostForm({ post, error }: { post?: P; error?: string }) 
   const [title, setTitle] = useState(post?.title || "")
   const [md, setMd] = useState(post?.content_md || "")
   const [prev, setPrev] = useState(false)
+  const taRef = useRef<HTMLTextAreaElement>(null)
   const [slugOv, setSlugOv] = useState<string | null>(post?.slug || null)
   const [excerptOv, setExcerptOv] = useState<string | null>(post?.excerpt || null)
   const [seoTitleOv, setSeoTitleOv] = useState<string | null>(post?.seo_title || null)
@@ -22,6 +24,16 @@ export default function PostForm({ post, error }: { post?: P; error?: string }) 
   const excerpt = excerptOv ?? autoSummary(md)
   const seoTitle = seoTitleOv ?? genSeoTitle(title)
   const seoDescription = seoDescOv ?? genSeoDescription(excerpt)
+  // Put a picture (or YouTube link) into the article at the cursor.
+  const insertAtCursor = (text: string) => {
+    const el = taRef.current, at = el ? el.selectionStart : md.length
+    const next = md.slice(0, at) + (at > 0 && md[at - 1] !== "\n" ? "\n\n" : "") + text + "\n\n" + md.slice(at)
+    setMd(next); setPrev(false)
+  }
+  const addPicture = (url: string) => {
+    const alt = (window.prompt("Short description of the picture (helps Google and screen readers):", "OneAccounts screenshot") || "OneAccounts screenshot").replace(/[\[\]]/g, "")
+    insertAtCursor(`![${alt}](${url})`)
+  }
   const checks = seoChecks({ title, seoTitle, seoDescription, content: md, slug })
 
   return (
@@ -53,12 +65,16 @@ export default function PostForm({ post, error }: { post?: P; error?: string }) 
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <b style={{ color: "var(--navy)", fontSize: 13 }}>Article (Markdown)</b>
-          <button type="button" className="link-btn" style={{ color: "var(--navy)" }} onClick={() => setPrev(!prev)}>{prev ? "Edit" : "Preview"}</button>
+          <span style={{ display: "flex", gap: 14, alignItems: "center" }}>
+            <PictureUpload onDone={addPicture} label="Add picture" />
+            <button type="button" className="link-btn" style={{ color: "var(--navy)" }} onClick={() => { const u = window.prompt("Paste a YouTube link:"); if (u) insertAtCursor(u.trim()) }}>Add YouTube video</button>
+            <button type="button" className="link-btn" style={{ color: "var(--navy)" }} onClick={() => setPrev(!prev)}>{prev ? "Edit" : "Preview"}</button>
+          </span>
         </div>
-        <textarea name="content_md" value={md} onChange={(e) => setMd(e.target.value)} style={{ minHeight: 420, fontFamily: "ui-monospace,Menlo,Consolas,monospace", fontSize: 14, display: prev ? "none" : "block" }} />
+        <textarea ref={taRef} name="content_md" value={md} onChange={(e) => setMd(e.target.value)} style={{ minHeight: 420, fontFamily: "ui-monospace,Menlo,Consolas,monospace", fontSize: 14, display: prev ? "none" : "block" }} />
         {prev && <div className="prose" style={{ border: "1px solid var(--hairline)", borderRadius: 9, padding: 24, background: "#fff", maxWidth: "none" }} dangerouslySetInnerHTML={{ __html: renderMd(md, title) }} />}
         <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: -6 }}>
-          Tip: aim for 600+ words that fully answer one question. End with <code>## Frequently asked questions</code> and a <code>### question?</code> heading for each one; Google can then show them as FAQ results. Link to other pages like <code>[OneAccounts](/oneaccounts)</code>.
+          Tip: aim for 600+ words that fully answer one question. End with <code>## Frequently asked questions</code> and a <code>### question?</code> heading for each one; Google can then show them as FAQ results. Click <b>Add picture</b> to place a screenshot where your cursor is (you can do this later when editing a published guide too). Pictures are shrunk automatically. Link to other pages like <code>[OneAccounts](/oneaccounts)</code>.
         </div>
 
         <label>

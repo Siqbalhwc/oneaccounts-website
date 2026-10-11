@@ -6,10 +6,15 @@ import { JsonLd, softwareLd, faqLd } from "@/lib/seo"
 import { Arc, IcReceipt, IcBox, IcPeople, IcClock, IcCoin, IcMobile } from "@/components/icons"
 import { IndustriesSection, TypesSection, AppsSection, PropertySection, HowSection, PricingBox, FaqSection, CtaBand } from "@/components/Sections"
 import LatestPosts from "@/components/LatestPosts"
+import ScreenshotGallery from "@/components/ScreenshotGallery"
+import VideoShowcase from "@/components/VideoShowcase"
+import { getMedia } from "@/lib/media"
 
 export const revalidate = 300
 
-export default function Home() {
+export default async function Home() {
+  const [shots, vids] = await Promise.all([getMedia("screenshot"), getMedia("video")])
+  const hasDemo = vids.length > 0
   return (
     <>
       <JsonLd data={[softwareLd(), faqLd(HOME_FAQ)]} />
@@ -20,23 +25,32 @@ export default function Home() {
           <h1>Simple by Design. Professional by Nature.</h1>
           <p className="sub">OneAccounts keeps your accounting, inventory, and payroll clear, current, and calm, so you always know where things stand.</p>
           <div className="hero-ctas">
-            <a href={SITE.youtube} target="_blank" rel="noopener" className="btn-primary"><span className="play">&#9654;</span> Watch 3-Minute Demo</a>
+            <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-primary"><span className="play">&#9654;</span> Watch the Demo</a>
             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-secondary">Start Free Trial</a>
           </div>
           <div className="hero-meta">No credit card required &middot; Free trial for new companies</div>
-          <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts ERP</a> &middot; <a href={SITE.properties} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
+          <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts ERP</a> &middot; <a href={SITE.propertiesLogin} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
           <Arc />
         </div>
       </section>
 
       <section className="screenshot-band"><div className="wrap">
-        <div className="browser-frame">
-          <div className="browser-chrome"><span /><span /><span /></div>
-          <div className="browser-body" style={{ display: "block", aspectRatio: "auto" }}>
-            <Image src={dash} alt="OneAccounts NGO dashboard with donor balances and budget tracking" priority sizes="(max-width: 1120px) 100vw, 1120px" style={{ width: "100%", height: "auto", display: "block" }} />
+        {shots.length > 0 ? <ScreenshotGallery items={shots} /> : (
+          <div className="browser-frame">
+            <div className="browser-chrome"><span /><span /><span /></div>
+            <div className="browser-body" style={{ display: "block", aspectRatio: "auto" }}>
+              <Image src={dash} alt="OneAccounts NGO dashboard with donor balances and budget tracking" priority sizes="(max-width: 1120px) 100vw, 1120px" style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
           </div>
-        </div>
+        )}
       </div></section>
+
+      {hasDemo && (
+        <section className="pillars" id="demo" style={{ paddingTop: 0 }}><div className="wrap">
+          <div className="pillars-head"><h2>Watch the demo</h2><p>See how it works before you start.</p></div>
+          <VideoShowcase items={vids} />
+        </div></section>
+      )}
 
       <section className="pillars" id="features"><div className="wrap">
         <div className="pillars-head"><h2>Less time on the books. More time on your business.</h2><p>Here is what you gain the day you start.</p></div>

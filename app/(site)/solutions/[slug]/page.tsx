@@ -4,6 +4,8 @@ import type { Metadata } from "next"
 import { SOLUTIONS, SITE } from "@/lib/content"
 import { meta } from "@/lib/meta"
 import { JsonLd, crumbLd, faqLd } from "@/lib/seo"
+import ProductMedia from "@/components/ProductMedia"
+import { SOLUTION_PRODUCT } from "@/lib/media"
 import { PageHero, TrialBtn, FeatureGrid, SectionHead, FaqSection, CtaBand } from "@/components/Sections"
 
 export function generateStaticParams() { return SOLUTIONS.map((s) => ({ slug: s.slug })) }
@@ -25,9 +27,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <TrialBtn /><Link className="btn-secondary" href="/oneaccounts">See all of OneAccounts</Link>
       </PageHero>
       <section className="pillars"><div className="wrap"><SectionHead title="Built around the way this business works" /><FeatureGrid items={s.points} /></div></section>
+      {SOLUTION_PRODUCT[s.slug] && <ProductMedia product={SOLUTION_PRODUCT[s.slug]} />}
       <FaqSection items={s.faq} title="Before you start" sub="Short answers to common questions." />
       <section className="sols"><div className="wrap"><div className="ind-head"><h2>Also see</h2><p>Related pages.</p></div>
-        <div className="sol-grid">{others.map((o) => (<Link key={o.slug} href={`/solutions/${o.slug}`}>{o.h1}</Link>))}<a href={SITE.properties} target="_blank" rel="noopener">Open Property Management</a></div></div></section>
+        <div className="sol-grid">{others.map((o) => (<Link key={o.slug} href={`/solutions/${o.slug}`}>{o.h1}</Link>))}<a href={SITE.propertiesLogin} target="_blank" rel="noopener">Open Property Management</a></div></div></section>
       <CtaBand />
     </>
   )

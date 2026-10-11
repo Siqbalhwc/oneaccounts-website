@@ -4,6 +4,7 @@ export const SITE = {
   tagline: "Simple by Design. Professional by Nature.",
   app: "https://app.oneaccountsbysiqbal.com",
   properties: "https://properties.oneaccountsbysiqbal.com",
+  propertiesLogin: "https://properties.oneaccountsbysiqbal.com/login", // sign in or create an account
   whatsapp: "https://wa.me/923716853677",
   whatsappDisplay: "+92 371 6853677",
   email: "support@oneaccountsbysiqbal.com",

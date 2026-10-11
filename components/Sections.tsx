@@ -78,7 +78,7 @@ export function AppsSection({ tag }: { tag?: string }) {
         <div className="app-card"><div className="host">properties.oneaccountsbysiqbal.com</div><h3>Property Management</h3>
           <p>Rent, leases and owner accounts for landlords, plazas and apartment buildings.</p>
           <ul><li>Buildings, rooms, owners, tenants, leases</li><li>Security deposits and settlement</li><li>Owner ledger with full accounting</li></ul>
-          <div className="acts"><a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener">Open Property Management</a><Link className="btn-secondary" href="/property-management">Learn more</Link></div></div>
+          <div className="acts"><a className="btn-primary" href={SITE.propertiesLogin} target="_blank" rel="noopener">Open Property Management</a><Link className="btn-secondary" href="/property-management">Learn more</Link></div></div>
       </div>
     </div></section>
   )
@@ -131,7 +131,7 @@ function PriceCards({ showHead }: { showHead: boolean }) {
           <a className="btn-light" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start Free Trial</a></div>
         <div className="pp"><h3>Property Management</h3><div className="big">{rs(PRICING.property)}</div><small>per month</small><div className="plus-note">+ add-ons if any</div>
           <ul><li>Buildings, rooms, owners, tenants, leases</li><li>Rent, deposits and owner ledger</li><li>Full accounting and reports</li></ul>
-          <a className="btn-primary" href={SITE.properties} target="_blank" rel="noopener"><span className="play">&rarr;</span> Open Property App</a></div>
+          <a className="btn-primary" href={SITE.propertiesLogin} target="_blank" rel="noopener"><span className="play">&rarr;</span> Open Property App &mdash; sign in or create account</a></div>
       </div>
       <p className="tbl-note" style={{ textAlign: "center" }}>Add-ons such as Payroll are optional and priced separately. Existing users can see their plan options inside the dashboard.</p>
     </div></section>
@@ -162,11 +162,11 @@ export function FaqSection({ items = HOME_FAQ, title = "Questions, answered", su
   )
 }
 
-export function CtaBand({ title = "Start calm. Stay calm." }: { title?: string }) {
+export function CtaBand({ title = "Start calm. Stay calm.", property = false }: { title?: string; property?: boolean }) {
   return (
     <section className="contact" id="start"><div className="wrap"><div className="cta-band">
-      <h2>{title}</h2><p>Free trial for new companies, no credit card required. We help you bring over your opening balances.</p>
-      <div className="row"><a className="btn-light" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start Free Trial</a><a className="btn-secondary" href={SITE.whatsapp} target="_blank" rel="noopener">Talk to us on WhatsApp</a></div>
+      <h2>{title}</h2><p>{property ? "Sign in or create your Property Management account. Ask us on WhatsApp and we will help you set up your first building." : "Free trial for new companies, no credit card required. We help you bring over your opening balances."}</p>
+      <div className="row"><a className="btn-light" href={property ? SITE.propertiesLogin : `${SITE.app}/login`} target="_blank" rel="noopener">{property ? "Open Property Management" : "Start Free Trial"}</a><a className="btn-secondary" href={SITE.whatsapp} target="_blank" rel="noopener">Talk to us on WhatsApp</a></div>
     </div></div></section>
   )
 }

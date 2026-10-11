@@ -18,7 +18,7 @@ export default function SiteHeader() {
         </Link>
         <div className="navlinks">{LINKS.map(([t, h]) => <Link key={t} href={h}>{t}</Link>)}</div>
         <div className="nav-cta">
-          <a className="btn-login alt" href={SITE.properties} target="_blank" rel="noopener">Property login</a>
+          <a className="btn-login alt" href={SITE.propertiesLogin} target="_blank" rel="noopener">Property login</a>
           <a className="btn-login" href={`${SITE.app}/login`} target="_blank" rel="noopener">ERP login</a>
           <button className="hamburger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}><span /><span /><span /></button>
         </div>
@@ -26,7 +26,7 @@ export default function SiteHeader() {
       <div className={`mobile-menu${open ? " open" : ""}`} onClick={() => setOpen(false)}>
         {LINKS.map(([t, h]) => <Link key={t} href={h}>{t}</Link>)}
         <a href={`${SITE.app}/login`} target="_blank" rel="noopener">ERP login &rarr;</a>
-        <a href={SITE.properties} target="_blank" rel="noopener">Property Management login &rarr;</a>
+        <a href={SITE.propertiesLogin} target="_blank" rel="noopener">Property Management login &rarr;</a>
       </div>
     </nav>
   )

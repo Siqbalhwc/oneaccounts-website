@@ -3,6 +3,14 @@ import { redirect } from "next/navigation"
 
 const admins = () => (process.env.ADMIN_EMAILS || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean)
 
+// For API routes: returns the admin's email, or null (no redirect).
+export async function getAdminEmail(): Promise<string | null> {
+  const sb = await authClient()
+  const { data } = await sb.auth.getUser()
+  const email = data.user?.email?.toLowerCase()
+  return email && admins().includes(email) ? email : null
+}
+
 export async function requireAdmin() {
   const sb = await authClient()
   const { data } = await sb.auth.getUser()
