@@ -24,7 +24,7 @@ export default async function Home() {
         <div className="wrap">
           <div className="eyebrow">Cloud Accounting &amp; ERP Software for Pakistan &middot; NGO &middot; Property Management</div>
           <h1>Simple by Design. Professional by Nature.</h1>
-          <p className="sub">Accounting, inventory and payroll for traders, NGOs, construction companies and property managers, with PKR and Pakistani tax built in.</p>
+          <p className="sub">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
           <div className="hero-ctas">
             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>
             <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-secondary">&#9654; Watch the Demo</a>
