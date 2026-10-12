@@ -8,7 +8,7 @@ import { JsonLd, orgLd, websiteLd } from "@/lib/seo"
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: "OneAccounts | Cloud Accounting & ERP Software for Pakistan", template: "%s" },
-  description: "OneAccounts is a cloud ERP for growing businesses and NGOs: accounting, inventory, and payroll that stay clear, current, and calm. Start a free trial, no credit card required.",
+  description: "Cloud accounting and ERP for Pakistani businesses and NGOs: accounting, inventory and payroll in one calm system. Start a free trial, no credit card.",
   applicationName: "OneAccounts",
   alternates: { canonical: "/" },
   openGraph: { siteName: "OneAccounts", type: "website", locale: "en_PK", url: SITE.url, images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "OneAccounts: Simple by Design. Professional by Nature." }] },

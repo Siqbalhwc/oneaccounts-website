@@ -4,6 +4,7 @@ import PictureUpload from "@/components/PictureUpload"
 import { savePost, deletePost } from "@/app/admin/actions"
 import { renderMd } from "@/lib/markdown"
 import SeoFields from "@/components/SeoFields"
+import HeadingHelper from "@/components/HeadingHelper"
 import { autoSummary, genSeoDescription, genSeoTitle, seoChecks, slugify } from "@/lib/postseo"
 
 type P = { id?: string; slug?: string; title?: string; excerpt?: string | null; content_md?: string; category?: string | null; cover_label?: string | null; seo_title?: string | null; seo_description?: string | null; status?: string }
@@ -21,7 +22,7 @@ export default function PostForm({ post, error }: { post?: P; error?: string }) 
 
   // Automatic values, built from what has been written
   const slug = slugOv ?? slugify(title)
-  const excerpt = excerptOv ?? autoSummary(md)
+  const excerpt = excerptOv ?? autoSummary(md, title)
   const seoTitle = seoTitleOv ?? genSeoTitle(title)
   const seoDescription = seoDescOv ?? genSeoDescription(excerpt)
   // Put a picture (or YouTube link) into the article at the cursor.
@@ -72,6 +73,7 @@ export default function PostForm({ post, error }: { post?: P; error?: string }) 
           </span>
         </div>
         <textarea ref={taRef} name="content_md" value={md} onChange={(e) => setMd(e.target.value)} style={{ minHeight: 420, fontFamily: "ui-monospace,Menlo,Consolas,monospace", fontSize: 14, display: prev ? "none" : "block" }} />
+        <HeadingHelper markdown={md} title={title} onApply={(next) => { setMd(next); setPrev(false) }} />
         {prev && <div className="prose" style={{ border: "1px solid var(--hairline)", borderRadius: 9, padding: 24, background: "#fff", maxWidth: "none" }} dangerouslySetInnerHTML={{ __html: renderMd(md, title) }} />}
         <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: -6 }}>
           Tip: aim for 600+ words that fully answer one question. End with <code>## Frequently asked questions</code> and a <code>### question?</code> heading for each one; Google can then show them as FAQ results. Click <b>Add picture</b> to place a screenshot where your cursor is (you can do this later when editing a published guide too). Pictures are shrunk automatically. Link to other pages like <code>[OneAccounts](/oneaccounts)</code>.

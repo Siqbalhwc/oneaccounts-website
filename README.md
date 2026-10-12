@@ -54,8 +54,13 @@ git push -u origin main
 
 - `/admin` sign in with the Supabase user from step 1.4. Only emails listed in `ADMIN_EMAILS` get in.
 - Contact form entries appear in `/admin/leads`.
-- Prices are hidden because the live site says plans are being finalised. To show them, set
-  `PRICING_PUBLIC = true` in `lib/content.ts` (figures are in the same file).
+- Prices are public (`PRICING_PUBLIC = true` in `lib/content.ts`, figures are in the same file).
+  Set it to `false` to hide them and show the "see plans inside your trial" box instead.
+- Guides pasted from Word or a chat tool lose their headings. In the guide editor, open "Heading helper",
+  tick the lines that are real headings, press Apply, check Preview, then Save. Nothing changes until you save.
+- New guide addresses are cut at a whole word, at most 60 characters. Saved guides keep their address.
+- `app/sitemap.ts` has a `PAGES_UPDATED` date. Change it when the wording of a fixed page really changes.
+- Browser security headers are set in `next.config.ts`. A Content-Security-Policy is not set yet.
 - "Start Free Trial" goes to `app.oneaccountsbysiqbal.com/login`, as on the current site.
 - Privacy and Terms are draft text. Please review them.
 - Clicking any in-page link brings that section to the middle of the screen (`components/AnchorScroll.tsx`).

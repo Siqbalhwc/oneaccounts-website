@@ -9,7 +9,7 @@ export function PostCards({ posts }: { posts: Awaited<ReturnType<typeof getPosts
       {posts.map((p) => (
         <Link key={p.id} href={`/blog/${p.slug}`} className="g-card">
           <div className={`g-cv ${coverClass(p.cover_label || p.category)}`}>{p.cover_label || p.category || "OneAccounts"}</div>
-          <div className="g-b"><small>{(p.category || "GUIDE").toUpperCase()}</small><h3>{p.title}</h3>{p.excerpt && <p>{p.excerpt}</p>}<span>{readMins(p.content_md)} min read</span></div>
+          <div className="g-b"><small>{(p.category || "GUIDE").toUpperCase()}</small><h3>{p.title}</h3>{p.excerpt && p.excerpt.trim().toLowerCase() !== p.title.trim().toLowerCase() && <p>{p.excerpt}</p>}<span>{readMins(p.content_md)} min read</span></div>
         </Link>
       ))}
     </div>

@@ -5,13 +5,17 @@ import { requireAdmin } from "@/lib/auth"
 import { adminClient } from "@/lib/supabase/admin"
 import { authClient } from "@/lib/supabase/server"
 
-const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 90)
+import { slugify } from "@/lib/postseo"
+
+// Saved guides keep their address exactly (shared links must keep working); only new guides get the short, whole-word address.
+const keepSlug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 120)
 
 export async function savePost(fd: FormData) {
   await requireAdmin()
   const id = String(fd.get("id") || "")
   const title = String(fd.get("title") || "").trim()
-  const slug = slugify(String(fd.get("slug") || "") || title)
+  const typedSlug = String(fd.get("slug") || "")
+  const slug = id ? keepSlug(typedSlug || title) : slugify(typedSlug || title)
   if (!title || !slug) redirect(`/admin/posts/${id || "new"}?e=missing`)
   const status = fd.get("status") === "published" ? "published" : "draft"
   const sb = adminClient()

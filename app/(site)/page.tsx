@@ -22,8 +22,9 @@ export default async function Home() {
       <section className="hero">
         <div className="sunrise-glow" />
         <div className="wrap">
-          <div className="eyebrow">Cloud Accounting &amp; ERP Software for Pakistan &middot; NGO &middot; Property Management</div>
-          <h1>Simple by Design. Professional by Nature.</h1>
+          <div className="eyebrow">OneAccounts by Siqbal &middot; NGO &middot; Construction &middot; Trading &middot; Property Management</div>
+          <h1>Cloud accounting &amp; ERP software for Pakistani businesses and NGOs</h1>
+          <p className="tagline">Simple by Design. Professional by Nature.</p>
           <p className="sub">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
           <div className="hero-ctas">
             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>

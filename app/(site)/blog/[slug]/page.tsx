@@ -5,16 +5,22 @@ import { meta } from "@/lib/meta"
 import { SITE } from "@/lib/content"
 import { JsonLd, crumbLd, faqLd } from "@/lib/seo"
 import { CtaBand } from "@/components/Sections"
+import RelatedGuides from "@/components/RelatedGuides"
 import { autoSummary, extractFaqs, extractHeadings, genSeoDescription, genSeoTitle, ogImageUrl, readMinutes, wordCount } from "@/lib/postseo"
 
 export const revalidate = 60
 export async function generateStaticParams() { return (await getPosts()).map((p) => ({ slug: p.slug })) }
 
 // Search title and description: the admin's own wording if they edited it, otherwise generated.
-const seoOf = (p: { title: string; excerpt: string | null; content_md: string; seo_title: string | null; seo_description: string | null }) => ({
-  title: p.seo_title?.trim() || genSeoTitle(p.title),
-  description: p.seo_description?.trim() || genSeoDescription(p.excerpt?.trim() || autoSummary(p.content_md)),
-})
+// A saved summary or description that is only a few words long (or just repeats the title) is ignored, so Google never gets a one-line snippet.
+const longEnough = (v?: string | null) => (v ?? "").trim().length >= 70
+const seoOf = (p: { title: string; excerpt: string | null; content_md: string; seo_title: string | null; seo_description: string | null }) => {
+  const sameAsTitle = (p.excerpt ?? "").trim().toLowerCase() === p.title.trim().toLowerCase()
+  return {
+    title: p.seo_title?.trim() || genSeoTitle(p.title),
+    description: (longEnough(p.seo_description) ? p.seo_description!.trim() : "") || genSeoDescription(longEnough(p.excerpt) && !sameAsTitle ? p.excerpt!.trim() : autoSummary(p.content_md, p.title)),
+  }
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
@@ -67,6 +73,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         )}
         <article className="prose" dangerouslySetInnerHTML={{ __html: renderMd(p.content_md, p.title) }} />
       </div></section>
+      <RelatedGuides current={{ slug: p.slug, category: p.category }} />
       <CtaBand />
     </>
   )

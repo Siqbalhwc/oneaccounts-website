@@ -5,8 +5,13 @@ import { SITE } from "@/lib/content"
 
 const clean = (s?: string | null) => (s ?? "").replace(/\s+/g, " ").trim()
 
-export function slugify(s: string) {
-  return s.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 90)
+// Short, readable web addresses: lower case, hyphens, cut at a whole word (never mid-word).
+export function slugify(s: string, max = 60) {
+  const full = s.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
+  if (full.length <= max) return full
+  const cut = full.slice(0, max + 1)
+  const dash = cut.lastIndexOf("-")
+  return (dash > max * 0.5 ? cut.slice(0, dash) : full.slice(0, max)).replace(/-+$/, "")
 }
 
 // Cuts at a word boundary so a Google result never ends mid-word.
@@ -32,13 +37,17 @@ export function stripMd(md: string) {
     .trim()
 }
 
-// First real paragraph (skips headings, lists, tables, images, quotes).
-export function firstParagraph(md: string) {
+// First real paragraph (skips headings, lists, tables, images, quotes, and a first line that only repeats the title).
+export function firstParagraph(md: string, title = "") {
   const blocks = md.replace(/\r\n?/g, "\n").split(/\n{2,}/)
+  const same = (a: string, b: string) => !!b && a.replace(/\s+/g, " ").trim().toLowerCase() === b.replace(/\s+/g, " ").trim().toLowerCase()
   for (const b of blocks) {
     const t = b.trim()
-    if (!t || /^(#|[-*+]\s|\d+\.\s|>|\||!\[|---)/.test(t)) continue
-    return stripMd(t)
+    if (!t || /^(#|[-*+]\s|\d+\.\s|>|\||!\[|---)/.test(t) || same(t, title)) continue
+    // A pasted block can start with a short heading line ("Introduction") before the real sentence.
+    const parts = t.split("\n")
+    const body = parts.length > 1 && parts[0].length < 60 && !/[.:;!?]$/.test(parts[0].trim()) ? parts.slice(1).join("\n") : t
+    return stripMd(body)
   }
   return ""
 }
@@ -98,8 +107,8 @@ export function genSeoTitle(title: string) {
 export function genSeoDescription(summary: string) {
   return truncateAtWord(summary, 155)
 }
-export function autoSummary(md: string) {
-  return truncateAtWord(firstParagraph(md), 160)
+export function autoSummary(md: string, title = "") {
+  return truncateAtWord(firstParagraph(md, title), 160)
 }
 
 // Branded share card (served by app/og/route.tsx). WhatsApp, Facebook, LinkedIn and X read it.
