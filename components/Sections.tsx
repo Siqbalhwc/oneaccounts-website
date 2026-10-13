@@ -30,7 +30,7 @@ export function SectionHead({ title, sub, tag }: { title: string; sub?: string; 
 
 export function IndustriesSection() {
   const cards = [
-    ["c1", "Trading Businesses", "Manage inventory with a stock check on every sale and average costing, plus receivables and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
+    ["c1", "Trading Businesses", "Trading ERP with a stock check on every sale and average costing, plus receivables and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
     ["c2", "NGOs", "Track donor balances, enforce budgets, and generate audit-ready reports in real time.", "/solutions/ngo-accounting-software", <IcHeart key="b" />],
     ["c3", "Service Organisations", "Bill clients accurately and see project profitability the moment it changes.", "/solutions/service-business-accounting", <IcBriefcase key="c" />],
     ["c4", "Construction", "Give each site its own projects, activities and budget, validate every bill against it, and track investor capital and profit share.", "/solutions/construction-accounting-software", <IcSite key="d" />],

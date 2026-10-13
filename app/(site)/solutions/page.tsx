@@ -4,7 +4,7 @@ import { SOLUTIONS } from "@/lib/content"
 import { JsonLd, crumbLd } from "@/lib/seo"
 import { PageHero, IndustriesSection, TypesSection, CtaBand } from "@/components/Sections"
 
-export const metadata = meta("Accounting Software Solutions by Business Type | OneAccounts", "Accounting and ERP for service, trading, NGO and construction businesses. See what each business type includes.", "/solutions")
+export const metadata = meta("Accounting Software by Business Type | OneAccounts", "Accounting and ERP for service, trading, NGO and construction businesses. See what each business type includes.", "/solutions")
 
 export default function Page() {
   return (

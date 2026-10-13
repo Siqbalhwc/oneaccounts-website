@@ -37,7 +37,11 @@ export const SOLUTIONS: Solution[] = [
     slug: "service-business-accounting",
     name: "Service",
     h1: "Accounting software for service businesses",
+<<<<<<< ours
     metaTitle: "Service Business Accounting Software Pakistan | OneAccounts",
+=======
+    metaTitle: "Accounting Software for Service Companies | OneAccounts",
+>>>>>>> theirs
     metaDesc: "Invoices, bills, receipts, payments, journals and every core report for service companies. Simple to use, double-entry underneath. Free trial.",
     intro: "Bill your clients, pay your vendors and see where the business stands, without a spreadsheet in sight. Every service company starts with the full accounting core.",
     points: [
@@ -56,10 +60,17 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "trading-business-software",
     name: "Trading",
+<<<<<<< ours
     h1: "Accounting and inventory software for trading businesses",
     metaTitle: "Trading & Inventory Accounting Software | OneAccounts",
     metaDesc: "Accounting plus inventory: stock check on every sale, average costing, product search, cash sales, returns and stock ledgers. Free trial.",
     intro: "Trading is accounting plus stock. OneAccounts checks available stock before you sell and values it on the average costing method, so what the shelf says and what the books say never drift apart.",
+=======
+    h1: "Trading ERP software: accounting and inventory for trading businesses",
+    metaTitle: "Trading ERP Software with Stock Check | OneAccounts",
+    metaDesc: "Trading ERP for Pakistan: accounting plus inventory, a stock check on every sale, average costing, cash sales, returns and product ledgers. Free trial.",
+    intro: "Trading is accounting plus stock. OneAccounts works as a trading ERP: it checks available stock before you sell and values it on the average costing method, so what the shelf says and what the books say never drift apart.",
+>>>>>>> theirs
     points: [
       { t: "Stock check on every sale", d: "Invoices check available stock, so you do not sell what you do not have." },
       { t: "Average costing", d: "Stock is valued on the average costing method, and cost of goods sold follows it." },
@@ -69,6 +80,7 @@ export const SOLUTIONS: Solution[] = [
       { t: "Product ledger", d: "Every movement of every product, in order, on screen and in PDF." },
     ],
     faq: [
+      { q: "Is OneAccounts a trading ERP?", a: "Yes. It combines accounting with inventory for trading businesses: stock is checked on every sale, valued on average cost, and every movement is recorded in the product ledger." },
       { q: "Which costing method does OneAccounts use for stock?", a: "Average costing. Each purchase updates the average cost, and sales are costed at that average." },
       { q: "Does it stop me selling stock I do not have?", a: "Yes. The system checks available stock when you enter a sale." },
       { q: "Can I import my products?", a: "Yes. CSV import and export is available, and we help you bring over opening balances." },
@@ -79,7 +91,11 @@ export const SOLUTIONS: Solution[] = [
     name: "NGO",
     h1: "NGO accounting software with project and donor budgets",
     metaTitle: "NGO Accounting Software with Donor Budgets | OneAccounts",
+<<<<<<< ours
     metaDesc: "Projects, activities, donor budgets and a budget check on every bill. Month-wise budgets, approval workflow and Budget vs Actual reports. Free trial.",
+=======
+    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, approvals and Budget vs Actual reports. Free trial.",
+>>>>>>> theirs
     intro: "Donors fund a project once, for its whole life. OneAccounts follows that: you set the budget by activity, location and account, and every bill is checked against it before it posts.",
     points: [
       { t: "Donors, projects, activities, locations", d: "Set them up by hand or import them from Excel, with a clear error list if something is wrong." },
@@ -98,8 +114,13 @@ export const SOLUTIONS: Solution[] = [
     slug: "construction-accounting-software",
     name: "Construction",
     h1: "Construction company accounting with site budgets and investor capital",
+<<<<<<< ours
     metaTitle: "Construction Accounting Software: Site Budgets | OneAccounts",
     metaDesc: "Projects, activities and budgets for each site, checked on every bill and invoice. Investor capital with percentage profit share. Free trial.",
+=======
+    metaTitle: "Construction Accounting with Site Budgets | OneAccounts",
+    metaDesc: "Construction accounting software with a budget for each site, validation on every bill, and investor capital with profit share. Free trial.",
+>>>>>>> theirs
     intro: "Set up each site as a project with its activities and a budget. Every bill and invoice is then validated against that site's budget before it posts, and investors are tracked by their share of each site.",
     points: [
       { t: "Projects (sites) and activities", d: "Organise spending by site, location and activity, the way a project actually runs." },
@@ -139,7 +160,11 @@ export const SOLUTIONS: Solution[] = [
     slug: "accounting-software-pakistan",
     name: "Accounting software for Pakistan",
     h1: "Cloud accounting software made for Pakistani businesses",
+<<<<<<< ours
     metaTitle: "Accounting Software in Pakistan | Cloud ERP | OneAccounts",
+=======
+    metaTitle: "Accounting Software in Pakistan, Cloud ERP | OneAccounts",
+>>>>>>> theirs
     metaDesc: "Cloud accounting and ERP in rupees, with withholding tax, payroll, inventory, WhatsApp invoices and support on WhatsApp. Start a free trial.",
     intro: "Built in Pakistan, priced in rupees and supported on WhatsApp. Tax and withholding are handled inside the entry, so the journal comes out right the first time.",
     points: [

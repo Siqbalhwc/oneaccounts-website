@@ -7,8 +7,13 @@ import { JsonLd, orgLd, websiteLd } from "@/lib/seo"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
+<<<<<<< ours
   title: { default: "OneAccounts | Cloud Accounting & ERP Software for Pakistan", template: "%s" },
   description: "Cloud accounting and ERP for Pakistani businesses and NGOs: accounting, inventory and payroll in one calm system. Start a free trial, no credit card.",
+=======
+  title: { default: "Accounting Software Pakistan: NGO, Property, Trading ERP", template: "%s" },
+  description: "Cloud accounting for NGOs, property managers and trading companies in Pakistan. Donor budgets, stock checks, owner ledgers. 10-day free trial.",
+>>>>>>> theirs
   applicationName: "OneAccounts",
   alternates: { canonical: "/" },
   openGraph: { siteName: "OneAccounts", type: "website", locale: "en_PK", url: SITE.url, images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "OneAccounts: Simple by Design. Professional by Nature." }] },

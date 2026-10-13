@@ -1,22 +1,30 @@
 import Image from "next/image"
-import Link from "next/link"
 import dash from "@/assets/ngo-dashboard.png"
-import { SITE, HOME_FAQ } from "@/lib/content"
+import { SITE, HOME_FAQ, PRICING_PUBLIC } from "@/lib/content"
 import { JsonLd, softwareLd, faqLd } from "@/lib/seo"
-import { Arc, IcReceipt, IcBox, IcPeople, IcClock, IcCoin, IcMobile } from "@/components/icons"
-import { IndustriesSection, TypesSection, AppsSection, PropertySection, HowSection, PricingBox, FaqSection, CtaBand } from "@/components/Sections"
-import LatestPosts from "@/components/LatestPosts"
+import { PricingBox, CtaBand } from "@/components/Sections"
+import { SectorBlock, ExampleCard, AlsoBuiltFor, HomePricing, GuidesIndex, HomeFaq } from "@/components/HomeSections"
+import HomeTrace from "@/components/HomeTrace"
+import DemoGrid from "@/components/DemoGrid"
 import Testimonials from "@/components/Testimonials"
 import ScreenshotGallery from "@/components/ScreenshotGallery"
-import VideoShowcase from "@/components/VideoShowcase"
 import { getMedia } from "@/lib/media"
+import { getPosts } from "@/lib/posts"
 
 export const revalidate = 300
 
+// The six questions shown on the page (and in its FAQ data): trial, cost, accountant, import, security, property.
+const FAQ_SHOWN = [0, 2, 3, 5, 9, 8]
+
 export default async function Home() {
-  const [shots, vids] = await Promise.all([getMedia("screenshot"), getMedia("video")])
+  const [vids, ngo, anyShots, prop, trade, posts] = await Promise.all([
+    getMedia("video"), getMedia("screenshot", "NGO"), getMedia("screenshot"), getMedia("screenshot", "Property"), getMedia("screenshot", "Trading"), getPosts(),
+  ])
+  const ngoShots = ngo.length ? ngo : anyShots // same gallery as before until NGO pictures are tagged in /admin
   const hasDemo = vids.length > 0
+  const faq = FAQ_SHOWN.map((i) => HOME_FAQ[i]).filter(Boolean)
   return (
+<<<<<<< ours
     <>
       <JsonLd data={[softwareLd(), faqLd(HOME_FAQ)]} />
       <section className="hero">
@@ -29,66 +37,75 @@ export default async function Home() {
           <div className="hero-ctas">
             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>
             <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-secondary">&#9654; Watch the Demo</a>
-          </div>
-          <ul className="hero-trust"><li>10-day free trial</li><li>No credit card required</li><li>Free help bringing your opening balances</li></ul>
-          <div className="hero-meta" style={{ marginTop: 10 }}>Already a customer? <a href={`${SITE.app}/login`} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open OneAccounts ERP</a> &middot; <a href={SITE.propertiesLogin} target="_blank" rel="noopener" style={{ color: "var(--navy)", fontWeight: 600 }}>Open Property Management</a></div>
-          <Arc />
-        </div>
-      </section>
+=======
+    <div className="hx">
+      <JsonLd data={[softwareLd(), faqLd(faq)]} />
 
-      <section className="screenshot-band"><div className="wrap">
-        {shots.length > 0 ? <ScreenshotGallery items={shots} /> : (
-          <div className="browser-frame">
-            <div className="browser-chrome"><span /><span /><span /></div>
-            <div className="browser-body" style={{ display: "block", aspectRatio: "auto" }}>
-              <Image src={dash} alt="OneAccounts NGO dashboard with donor balances and budget tracking" priority sizes="(max-width: 1120px) 100vw, 1120px" style={{ width: "100%", height: "auto", display: "block" }} />
-            </div>
+      <section className="hx-hero"><div className="wrap hx-split">
+        <div className="hx-copy">
+          <h1>Accounting software in Pakistan for NGOs, property managers and trading companies</h1>
+          <p className="lead">One cloud ledger where every number opens to the document behind it. Priced in rupees, with withholding tax handled inside the entry.</p>
+          <div className="hx-acts">
+            <a className="hx-btn" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start free trial</a>
+            <a className="hx-link" href={hasDemo ? "#demos" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })}>{hasDemo ? "Watch the demos" : "Watch the demo"}</a>
+>>>>>>> theirs
           </div>
-        )}
+          <p className="hx-small">10 days free. No credit card. We help you bring over your opening balances.</p>
+          <p className="hx-small">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
+        </div>
+        <div className="hx-fig"><HomeTrace /></div>
       </div></section>
 
+      <SectorBlock id="ngo" title="NGO accounting software with donor and project budgets"
+        intro="Donors fund a project once, for its whole life. Set the budget by activity, location and account, and every bill is checked against it before it posts."
+        bullets={["Month-wise budgets that follow the project period", "Approval workflow with a full change history", "Budget vs Actual by activity and location, on screen and in PDF"]}
+        href="/solutions/ngo-accounting-software" cta="See NGO accounting">
+        {ngoShots.length > 0 ? <ScreenshotGallery items={ngoShots} /> : (
+          <>
+            <div className="browser-frame">
+              <div className="browser-chrome"><span /><span /><span /></div>
+              <Image src={dash} alt="OneAccounts NGO dashboard with donor balances and budget tracking" sizes="(max-width: 860px) 100vw, 540px" style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+            <p className="hx-cap"><b>NGO dashboard.</b> Donor balances and budget use at a glance.</p>
+          </>
+        )}
+      </SectorBlock>
+
+      <SectorBlock id="property" flip title="Property management software with real accounting underneath"
+        intro="Buildings, rooms, owners, tenants and leases in one place. Rent invoices, security deposits and owner statements post straight into the books."
+        bullets={["Batch rent invoices with PDF receipts", "Security deposits received, held and settled with deductions", "Owner ledger with settlement and payout"]}
+        href="/property-management" cta="See property management">
+        {prop.length > 0 ? <ScreenshotGallery items={prop} /> : (
+          <ExampleCard title="Owner statement, Plaza A, October"
+            rows={[["Rent invoiced", "Rs 540,000"], ["Rent received", "Rs 495,000"], ["Building expenses", "Rs 86,000"], ["Net to owner", "Rs 409,000"]]}
+            note="Property Management runs as its own app, with the same accounting standard underneath." />
+        )}
+      </SectorBlock>
+
+      <SectorBlock id="trading" title="Trading ERP with a stock check on every sale"
+        intro="Trading is accounting plus stock. OneAccounts checks available stock before you sell and values it on average cost, so the shelf and the books agree."
+        bullets={["Product search on invoices and bills", "Cash sales, with returns that reverse stock and accounts together", "Product ledger showing every movement in order"]}
+        href="/solutions/trading-business-software" cta="See trading ERP">
+        {trade.length > 0 ? <ScreenshotGallery items={trade} /> : (
+          <ExampleCard title="Product ledger, Item 118" head={["Date", "Document", "Qty", "On hand"]}
+            rows={[["02 Oct", "Purchase bill", "+200", "200"], ["06 Oct", "Sales invoice", "-48", "152"], ["09 Oct", "Sales invoice", "-40", "112"]]}
+            note="A sale of 130 units is refused when only 112 are available." />
+        )}
+      </SectorBlock>
+
       {hasDemo && (
-        <section className="pillars" id="demo" style={{ paddingTop: 0 }}><div className="wrap">
-          <div className="pillars-head"><h2>Watch the demo</h2><p>See how it works before you start.</p></div>
-          <VideoShowcase items={vids} />
+        <section className="hx-sec" id="demos"><div className="wrap">
+          <div className="hx-head row"><div><h2>Watch the demos</h2><p>Short videos of everyday tasks in OneAccounts.</p></div><a className="hx-link" href={SITE.youtube} target="_blank" rel="noopener">All demos on YouTube</a></div>
+          <DemoGrid items={vids} />
         </div></section>
       )}
 
-      <section className="pillars" id="features"><div className="wrap">
-        <div className="pillars-head"><h2>Less time on the books. More time on your business.</h2><p>Here is what you gain the day you start.</p></div>
-        <div className="pillars-grid">
-          <div className="pillar"><div className="mark"><IcClock /></div><h3>Get your time back</h3><p>Post an invoice, bill or payment in seconds. Reports update the moment you save, so month-end stops being a project.</p></div>
-          <div className="pillar"><div className="mark"><IcCoin /></div><h3>Run it yourself, save the cost</h3><p>It is easy enough for anyone on your team. No full-time accountant for daily bookkeeping, and no chasing for follow-ups.</p></div>
-          <div className="pillar"><div className="mark"><IcMobile /></div><h3>Your business in your pocket</h3><p>A smooth mobile experience lets you work from your phone, anywhere in the world, at any time. Peace of mind wherever you are.</p></div>
-          <div className="pillar"><div className="mark"><IcReceipt /></div><h3>Know exactly where you stand</h3><p>Accounting that answers the question before you have to ask it.</p></div>
-          <div className="pillar"><div className="mark"><IcBox /></div><h3>Never wonder what&apos;s in stock</h3><p>Inventory you can trust, down to the last unit, in real time.</p></div>
-          <div className="pillar"><div className="mark"><IcPeople /></div><h3>Pay everyone accurately, on time</h3><p>Payroll and banking that reconcile themselves quietly in the background.</p></div>
-        </div>
-      </div></section>
-
-      <IndustriesSection />
-      <TypesSection />
-      <AppsSection />
-      <PropertySection />
-
-      <section className="sols"><div className="wrap">
-        <div className="ind-head"><h2>Software for the problem you are solving</h2><p>Find the page that matches what you are looking for.</p></div>
-        <div className="sol-grid">
-          <Link href="/solutions/accounting-software-pakistan">Accounting software for Pakistan</Link>
-          <Link href="/solutions/ngo-accounting-software">NGO accounting software</Link>
-          <Link href="/solutions/inventory-management-software">Inventory management for traders</Link>
-          <Link href="/solutions/construction-accounting-software">Construction company accounting</Link>
-          <Link href="/property-management">Property management software in Pakistan</Link>
-          <Link href="/solutions/rental-property-accounting">Rental property accounting</Link>
-        </div>
-      </div></section>
-
-      <HowSection />
+      <AlsoBuiltFor />
+      {PRICING_PUBLIC ? <HomePricing /> : <PricingBox />}
       <Testimonials />
-      <PricingBox />
-      <LatestPosts />
-      <FaqSection />
-      <CtaBand />
-    </>
+      <GuidesIndex posts={posts} />
+      <HomeFaq items={faq} />
+      <CtaBand title="Start with your own books" />
+    </div>
   )
 }

@@ -4,7 +4,7 @@ import { MODULES, SITE } from "@/lib/content"
 import { JsonLd, crumbLd, softwareLd } from "@/lib/seo"
 import { PageHero, TrialBtn, FeatureGrid, SectionHead, TypesSection, PricingBox, CtaBand } from "@/components/Sections"
 
-export const metadata = meta("OneAccounts Cloud ERP: Accounting, Inventory, Payroll in Pakistan", "Cloud accounting and ERP for trading, service, NGO and construction companies. Invoices, bills, inventory, payroll, tax and budgets in one calm system. Free trial.", "/oneaccounts")
+export const metadata = meta("Cloud ERP: Accounting, Inventory, Payroll | OneAccounts", "Cloud accounting and ERP for trading, service, NGO and construction companies: invoices, bills, inventory, payroll, tax and budgets. Free trial.", "/oneaccounts")
 
 export default function Page() {
   return (

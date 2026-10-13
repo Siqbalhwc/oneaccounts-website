@@ -5,7 +5,7 @@ import { PageHero, CtaBand } from "@/components/Sections"
 import { PostCards } from "@/components/LatestPosts"
 
 export const revalidate = 60
-export const metadata = meta("Guides: Accounting, Tax, NGO Budgets & Property | OneAccounts", "Plain answers for the people who keep the books: withholding tax, NGO budget control, inventory and property management.", "/blog")
+export const metadata = meta("Accounting, Tax, NGO and Property Guides | OneAccounts", "Plain answers for the people who keep the books: withholding tax, NGO budget control, inventory and property management.", "/blog")
 
 export default async function Page() {
   const posts = await getPosts()

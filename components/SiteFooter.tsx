@@ -23,7 +23,7 @@ export default function SiteFooter() {
         </div>
         <div className="foot-col">
           <div className="foot-col-title">Industries</div>
-          <Link href="/solutions/trading-business-software">Trading Businesses</Link>
+          <Link href="/solutions/trading-business-software">Trading ERP</Link>
           <Link href="/solutions/ngo-accounting-software">NGOs</Link>
           <Link href="/solutions/service-business-accounting">Service Organisations</Link>
           <Link href="/solutions/construction-accounting-software">Construction</Link>
