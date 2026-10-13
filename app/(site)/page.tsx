@@ -24,20 +24,6 @@ export default async function Home() {
   const hasDemo = vids.length > 0
   const faq = FAQ_SHOWN.map((i) => HOME_FAQ[i]).filter(Boolean)
   return (
-<<<<<<< ours
-    <>
-      <JsonLd data={[softwareLd(), faqLd(HOME_FAQ)]} />
-      <section className="hero">
-        <div className="sunrise-glow" />
-        <div className="wrap">
-          <div className="eyebrow">OneAccounts by Siqbal &middot; NGO &middot; Construction &middot; Trading &middot; Property Management</div>
-          <h1>Cloud accounting &amp; ERP software for Pakistani businesses and NGOs</h1>
-          <p className="tagline">Simple by Design. Professional by Nature.</p>
-          <p className="sub">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
-          <div className="hero-ctas">
-            <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>
-            <a href={hasDemo ? "#demo" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })} className="btn-secondary">&#9654; Watch the Demo</a>
-=======
     <div className="hx">
       <JsonLd data={[softwareLd(), faqLd(faq)]} />
 
@@ -48,7 +34,6 @@ export default async function Home() {
           <div className="hx-acts">
             <a className="hx-btn" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start free trial</a>
             <a className="hx-link" href={hasDemo ? "#demos" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })}>{hasDemo ? "Watch the demos" : "Watch the demo"}</a>
->>>>>>> theirs
           </div>
           <p className="hx-small">10 days free. No credit card. We help you bring over your opening balances.</p>
           <p className="hx-small">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
