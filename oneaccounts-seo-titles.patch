@@ -1,0 +1,212 @@
+diff --git a/app/(site)/blog/page.tsx b/app/(site)/blog/page.tsx
+index 8a4f266..ca2be06 100644
+--- a/app/(site)/blog/page.tsx
++++ b/app/(site)/blog/page.tsx
+@@ -5,7 +5,7 @@ import { PageHero, CtaBand } from "@/components/Sections"
+ import { PostCards } from "@/components/LatestPosts"
+ 
+ export const revalidate = 60
+-export const metadata = meta("Guides: Accounting, Tax, NGO Budgets & Property | OneAccounts", "Plain answers for the people who keep the books: withholding tax, NGO budget control, inventory and property management.", "/blog")
++export const metadata = meta("Accounting, Tax, NGO and Property Guides | OneAccounts", "Plain answers for the people who keep the books: withholding tax, NGO budget control, inventory and property management.", "/blog")
+ 
+ export default async function Page() {
+   const posts = await getPosts()
+diff --git a/app/(site)/oneaccounts/page.tsx b/app/(site)/oneaccounts/page.tsx
+index 9505a38..c73557e 100644
+--- a/app/(site)/oneaccounts/page.tsx
++++ b/app/(site)/oneaccounts/page.tsx
+@@ -4,7 +4,7 @@ import { MODULES, SITE } from "@/lib/content"
+ import { JsonLd, crumbLd, softwareLd } from "@/lib/seo"
+ import { PageHero, TrialBtn, FeatureGrid, SectionHead, TypesSection, PricingBox, CtaBand } from "@/components/Sections"
+ 
+-export const metadata = meta("OneAccounts Cloud ERP: Accounting, Inventory, Payroll in Pakistan", "Cloud accounting and ERP for trading, service, NGO and construction companies. Invoices, bills, inventory, payroll, tax and budgets in one calm system. Free trial.", "/oneaccounts")
++export const metadata = meta("Cloud ERP: Accounting, Inventory, Payroll | OneAccounts", "Cloud accounting and ERP for trading, service, NGO and construction companies: invoices, bills, inventory, payroll, tax and budgets. Free trial.", "/oneaccounts")
+ 
+ export default function Page() {
+   return (
+diff --git a/app/(site)/page.tsx b/app/(site)/page.tsx
+index 2d6fc88..92ebed0 100644
+--- a/app/(site)/page.tsx
++++ b/app/(site)/page.tsx
+@@ -23,7 +23,7 @@ export default async function Home() {
+         <div className="sunrise-glow" />
+         <div className="wrap">
+           <div className="eyebrow">Cloud Accounting &amp; ERP Software for Pakistan &middot; NGO &middot; Property Management</div>
+-          <h1>Simple by Design. Professional by Nature.</h1>
++          <h1>Accounting software in Pakistan for NGOs, property managers and trading companies</h1>
+           <p className="sub">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
+           <div className="hero-ctas">
+             <a href={`${SITE.app}/login`} target="_blank" rel="noopener" className="btn-primary"><span className="play">&rarr;</span> Start Free Trial</a>
+@@ -75,6 +75,7 @@ export default async function Home() {
+         <div className="sol-grid">
+           <Link href="/solutions/accounting-software-pakistan">Accounting software for Pakistan</Link>
+           <Link href="/solutions/ngo-accounting-software">NGO accounting software</Link>
++          <Link href="/solutions/trading-business-software">Trading ERP software</Link>
+           <Link href="/solutions/inventory-management-software">Inventory management for traders</Link>
+           <Link href="/solutions/construction-accounting-software">Construction company accounting</Link>
+           <Link href="/property-management">Property management software in Pakistan</Link>
+diff --git a/app/(site)/property-management/page.tsx b/app/(site)/property-management/page.tsx
+index eca9da6..73e0b59 100644
+--- a/app/(site)/property-management/page.tsx
++++ b/app/(site)/property-management/page.tsx
+@@ -10,7 +10,7 @@ const FAQ = [
+   { q: "Does it include accounting reports?", a: "Yes. It includes the chart of accounts, journal, ledger, trial balance, profit and loss and balance sheet, along with an owner ledger." },
+   { q: "Can I import my existing tenants and units?", a: "Yes. Excel templates are available for bulk import, and you can back up and restore your data." },
+ ]
+-export const metadata = meta("Property Management Software in Pakistan | OneAccounts", "Buildings, rooms, owners, tenants, leases, rent invoices, deposits and owner statements, posted into real double-entry accounting. Built for landlords and building managers.", "/property-management")
++export const metadata = meta("Property Management Software Pakistan | OneAccounts", "Property management software for landlords and building managers: leases, rent invoices, deposits and owner statements in real accounting.", "/property-management")
+ 
+ export default function Page() {
+   return (
+diff --git a/app/(site)/solutions/page.tsx b/app/(site)/solutions/page.tsx
+index 65987fe..1e2a442 100644
+--- a/app/(site)/solutions/page.tsx
++++ b/app/(site)/solutions/page.tsx
+@@ -4,7 +4,7 @@ import { SOLUTIONS } from "@/lib/content"
+ import { JsonLd, crumbLd } from "@/lib/seo"
+ import { PageHero, IndustriesSection, TypesSection, CtaBand } from "@/components/Sections"
+ 
+-export const metadata = meta("Accounting Software Solutions by Business Type | OneAccounts", "Accounting and ERP for service, trading, NGO and construction businesses. See what each business type includes.", "/solutions")
++export const metadata = meta("Accounting Software by Business Type | OneAccounts", "Accounting and ERP for service, trading, NGO and construction businesses. See what each business type includes.", "/solutions")
+ 
+ export default function Page() {
+   return (
+diff --git a/app/globals.css b/app/globals.css
+index 78b1de8..6d7e638 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -51,7 +51,7 @@
+   }
+   .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:0.07em; text-transform:uppercase; color:var(--sage); font-weight:700; margin-bottom:26px; text-align:center; line-height:1.5; position:relative; z-index:2;}
+   .eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--sage);}
+-  .hero h1{position:relative; z-index:2; font-size:clamp(36px,4.6vw,54px); line-height:1.16; color:var(--navy); max-width:760px; margin:0 auto 22px;}
++  .hero h1{position:relative; z-index:2; font-size:clamp(30px,3.7vw,46px); line-height:1.18; color:var(--navy); max-width:880px; margin:0 auto 22px; text-wrap:balance;}
+   .hero p.sub{position:relative; z-index:2; font-size:17.5px; color:var(--ink-soft); font-weight:400; max-width:620px; margin:0 auto 40px; line-height:1.6;}
+   .hero-ctas{position:relative; z-index:2; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap; margin-bottom:22px;}
+   .btn-primary{display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:var(--white); padding:15px 30px; border-radius:10px; font-size:15px; font-weight:600;
+diff --git a/app/layout.tsx b/app/layout.tsx
+index 8ea425e..07a551e 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -7,8 +7,8 @@ import { JsonLd, orgLd, websiteLd } from "@/lib/seo"
+ 
+ export const metadata: Metadata = {
+   metadataBase: new URL(SITE.url),
+-  title: { default: "OneAccounts | Cloud Accounting & ERP Software for Pakistan", template: "%s" },
+-  description: "OneAccounts is a cloud ERP for growing businesses and NGOs: accounting, inventory, and payroll that stay clear, current, and calm. Start a free trial, no credit card required.",
++  title: { default: "Accounting Software Pakistan: NGO, Property, Trading ERP", template: "%s" },
++  description: "Cloud accounting for NGOs, property managers and trading companies in Pakistan. Donor budgets, stock checks, owner ledgers. 10-day free trial.",
+   applicationName: "OneAccounts",
+   alternates: { canonical: "/" },
+   openGraph: { siteName: "OneAccounts", type: "website", locale: "en_PK", url: SITE.url, images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "OneAccounts: Simple by Design. Professional by Nature." }] },
+diff --git a/components/Sections.tsx b/components/Sections.tsx
+index 8943515..040cabb 100644
+--- a/components/Sections.tsx
++++ b/components/Sections.tsx
+@@ -30,7 +30,7 @@ export function SectionHead({ title, sub, tag }: { title: string; sub?: string;
+ 
+ export function IndustriesSection() {
+   const cards = [
+-    ["c1", "Trading Businesses", "Manage inventory with a stock check on every sale and average costing, plus receivables and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
++    ["c1", "Trading Businesses", "Trading ERP with a stock check on every sale and average costing, plus receivables and tax, without manual spreadsheets.", "/solutions/trading-business-software", <IcBag key="a" />],
+     ["c2", "NGOs", "Track donor balances, enforce budgets, and generate audit-ready reports in real time.", "/solutions/ngo-accounting-software", <IcHeart key="b" />],
+     ["c3", "Service Organisations", "Bill clients accurately and see project profitability the moment it changes.", "/solutions/service-business-accounting", <IcBriefcase key="c" />],
+     ["c4", "Construction", "Give each site its own projects, activities and budget, validate every bill against it, and track investor capital and profit share.", "/solutions/construction-accounting-software", <IcSite key="d" />],
+diff --git a/components/SiteFooter.tsx b/components/SiteFooter.tsx
+index 19359fe..835c8cc 100644
+--- a/components/SiteFooter.tsx
++++ b/components/SiteFooter.tsx
+@@ -23,7 +23,7 @@ export default function SiteFooter() {
+         </div>
+         <div className="foot-col">
+           <div className="foot-col-title">Industries</div>
+-          <Link href="/solutions/trading-business-software">Trading Businesses</Link>
++          <Link href="/solutions/trading-business-software">Trading ERP</Link>
+           <Link href="/solutions/ngo-accounting-software">NGOs</Link>
+           <Link href="/solutions/service-business-accounting">Service Organisations</Link>
+           <Link href="/solutions/construction-accounting-software">Construction</Link>
+diff --git a/lib/content.ts b/lib/content.ts
+index 8a00aa1..e75c105 100644
+--- a/lib/content.ts
++++ b/lib/content.ts
+@@ -37,7 +37,7 @@ export const SOLUTIONS: Solution[] = [
+     slug: "service-business-accounting",
+     name: "Service",
+     h1: "Accounting software for service businesses",
+-    metaTitle: "Accounting Software for Service Businesses in Pakistan | OneAccounts",
++    metaTitle: "Accounting Software for Service Companies | OneAccounts",
+     metaDesc: "Invoices, bills, receipts, payments, journals and every core report for service companies. Simple to use, double-entry underneath. Free trial.",
+     intro: "Bill your clients, pay your vendors and see where the business stands, without a spreadsheet in sight. Every service company starts with the full accounting core.",
+     points: [
+@@ -56,10 +56,10 @@ export const SOLUTIONS: Solution[] = [
+   {
+     slug: "trading-business-software",
+     name: "Trading",
+-    h1: "Accounting and inventory software for trading businesses",
+-    metaTitle: "Trading Business Accounting & Inventory Software Pakistan | OneAccounts",
+-    metaDesc: "Accounting plus inventory with a stock check on every sale and average costing. Product search on invoices and bills, cash sales, returns and stock ledgers. Free trial.",
+-    intro: "Trading is accounting plus stock. OneAccounts checks available stock before you sell and values it on the average costing method, so what the shelf says and what the books say never drift apart.",
++    h1: "Trading ERP software: accounting and inventory for trading businesses",
++    metaTitle: "Trading ERP Software with Stock Check | OneAccounts",
++    metaDesc: "Trading ERP for Pakistan: accounting plus inventory, a stock check on every sale, average costing, cash sales, returns and product ledgers. Free trial.",
++    intro: "Trading is accounting plus stock. OneAccounts works as a trading ERP: it checks available stock before you sell and values it on the average costing method, so what the shelf says and what the books say never drift apart.",
+     points: [
+       { t: "Stock check on every sale", d: "Invoices check available stock, so you do not sell what you do not have." },
+       { t: "Average costing", d: "Stock is valued on the average costing method, and cost of goods sold follows it." },
+@@ -69,6 +69,7 @@ export const SOLUTIONS: Solution[] = [
+       { t: "Product ledger", d: "Every movement of every product, in order, on screen and in PDF." },
+     ],
+     faq: [
++      { q: "Is OneAccounts a trading ERP?", a: "Yes. It combines accounting with inventory for trading businesses: stock is checked on every sale, valued on average cost, and every movement is recorded in the product ledger." },
+       { q: "Which costing method does OneAccounts use for stock?", a: "Average costing. Each purchase updates the average cost, and sales are costed at that average." },
+       { q: "Does it stop me selling stock I do not have?", a: "Yes. The system checks available stock when you enter a sale." },
+       { q: "Can I import my products?", a: "Yes. CSV import and export is available, and we help you bring over opening balances." },
+@@ -78,8 +79,8 @@ export const SOLUTIONS: Solution[] = [
+     slug: "ngo-accounting-software",
+     name: "NGO",
+     h1: "NGO accounting software with project and donor budgets",
+-    metaTitle: "NGO Accounting Software with Donor & Project Budgets | OneAccounts",
+-    metaDesc: "Projects, activities, donor budgets and a budget check on every bill. Month-wise budgets, approval workflow and Budget vs Actual reports. Free trial.",
++    metaTitle: "NGO Accounting Software with Donor Budgets | OneAccounts",
++    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, approvals and Budget vs Actual reports. Free trial.",
+     intro: "Donors fund a project once, for its whole life. OneAccounts follows that: you set the budget by activity, location and account, and every bill is checked against it before it posts.",
+     points: [
+       { t: "Donors, projects, activities, locations", d: "Set them up by hand or import them from Excel, with a clear error list if something is wrong." },
+@@ -98,8 +99,8 @@ export const SOLUTIONS: Solution[] = [
+     slug: "construction-accounting-software",
+     name: "Construction",
+     h1: "Construction company accounting with site budgets and investor capital",
+-    metaTitle: "Construction Accounting Software: Site Budgets & Investors | OneAccounts",
+-    metaDesc: "Projects, activities and budgets for each site, with validation on every bill and invoice. Investor capital with percentage profit share. Built for construction companies.",
++    metaTitle: "Construction Accounting with Site Budgets | OneAccounts",
++    metaDesc: "Construction accounting software with a budget for each site, validation on every bill, and investor capital with profit share. Free trial.",
+     intro: "Set up each site as a project with its activities and a budget. Every bill and invoice is then validated against that site's budget before it posts, and investors are tracked by their share of each site.",
+     points: [
+       { t: "Projects (sites) and activities", d: "Organise spending by site, location and activity, the way a project actually runs." },
+@@ -119,7 +120,7 @@ export const SOLUTIONS: Solution[] = [
+     slug: "inventory-management-software",
+     name: "Inventory",
+     h1: "Inventory management software connected to your accounts",
+-    metaTitle: "Inventory Management Software for Traders in Pakistan | OneAccounts",
++    metaTitle: "Inventory Management Software for Traders | OneAccounts",
+     metaDesc: "Stock register, stock check on every sale, average costing, units of measurement and a product ledger, all connected to sales, purchases and accounts.",
+     intro: "Stock that agrees with your accounts. Every quantity change is a recorded movement, stock is checked before you sell and valued on average cost, so you can always see how a number came to be.",
+     points: [
+@@ -139,7 +140,7 @@ export const SOLUTIONS: Solution[] = [
+     slug: "accounting-software-pakistan",
+     name: "Accounting software for Pakistan",
+     h1: "Cloud accounting software made for Pakistani businesses",
+-    metaTitle: "Accounting Software in Pakistan | Cloud ERP in PKR | OneAccounts",
++    metaTitle: "Accounting Software in Pakistan, Cloud ERP | OneAccounts",
+     metaDesc: "Cloud accounting and ERP in rupees, with withholding tax, payroll, inventory, WhatsApp invoices and support on WhatsApp. Start a free trial.",
+     intro: "Built in Pakistan, priced in rupees and supported on WhatsApp. Tax and withholding are handled inside the entry, so the journal comes out right the first time.",
+     points: [
+@@ -159,7 +160,7 @@ export const SOLUTIONS: Solution[] = [
+     slug: "rental-property-accounting",
+     name: "Rental property accounting",
+     h1: "Rental property accounting that matches your rent roll",
+-    metaTitle: "Rental Property Accounting Software | OneAccounts Property Management",
++    metaTitle: "Rental Property Accounting Software | OneAccounts",
+     metaDesc: "Rent invoices, receipts, security deposits, expenses and owner statements, posted into real double-entry books. Built for landlords and building managers.",
+     intro: "Rent collected is already in the books. Property operations and accounting live in one place, so the owner's statement comes straight from the ledger.",
+     points: [
