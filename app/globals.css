@@ -456,3 +456,7 @@
   @media (max-width:1279px){.btn-login.alt{display:none}}
   @media (max-width:1120px){.navlinks{display:none}.hamburger{display:flex}}
   .hx-hero .hx-copy{flex:1.3 1 520px}
+
+  /* ---- Homepage closing banner: white heading on the navy band (the homepage heading colour was overriding it) ---- */
+  .hx .cta-band h2{color:#fff}
+  .hx .cta-band p{color:rgba(255,255,255,.78)}
