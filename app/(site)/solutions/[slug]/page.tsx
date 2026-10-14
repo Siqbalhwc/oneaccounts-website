@@ -27,6 +27,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <TrialBtn /><Link className="btn-secondary" href="/oneaccounts">See all of OneAccounts</Link>
       </PageHero>
       <section className="pillars"><div className="wrap"><SectionHead title="Built around the way this business works" /><FeatureGrid items={s.points} /></div></section>
+      {s.sections && (
+        <section className="hx-sec"><div className="wrap"><article className="prose">
+          {s.sections.map((x) => (
+            <div key={x.h}>
+              <h2>{x.h}</h2>
+              {x.p.map((t, i) => <p key={i}>{t}</p>)}
+              {x.list && <ul>{x.list.map((l) => <li key={l}>{l}</li>)}</ul>}
+            </div>
+          ))}
+        </article></div></section>
+      )}
       {SOLUTION_PRODUCT[s.slug] && <ProductMedia product={SOLUTION_PRODUCT[s.slug]} />}
       <FaqSection items={s.faq} title="Before you start" sub="Short answers to common questions." />
       <section className="sols"><div className="wrap"><div className="ind-head"><h2>Also see</h2><p>Related pages.</p></div>

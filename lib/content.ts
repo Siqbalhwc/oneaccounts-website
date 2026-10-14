@@ -30,6 +30,8 @@ export type Solution = {
   intro: string
   points: { t: string; d: string }[]
   faq: { q: string; a: string }[]
+  // Optional long-form body shown under the feature grid. Each section is a heading plus paragraphs and an optional list.
+  sections?: { h: string; p: string[]; list?: string[] }[]
 }
 
 export const SOLUTIONS: Solution[] = [
@@ -93,6 +95,41 @@ export const SOLUTIONS: Solution[] = [
     faq: [
       { q: "What happens if a bill exceeds the budget?", a: "The bill is refused before it posts, with the available balance shown. When the bill is edited down, the budget is released again." },
       { q: "Is the budget tied to a calendar year?", a: "No. Budgets follow the project period, because donors fund a project for its whole duration." },
+      { q: "Can I import donors, projects and activities from Excel?", a: "Yes. You can import them from Excel, and if a row is wrong you get a clear error list." },
+      { q: "Can I report to more than one donor?", a: "Yes. Each donor and project has its own budget, and Budget vs Actual can be viewed by activity and location." },
+    ],
+    sections: [
+      { h: "Why NGO accounting is different from business accounting", p: [
+        "A business asks one question: did we make a profit this year? An NGO asks several at once. How much of Donor A's grant is spent, how much is left, and was it spent on the activities the agreement allows? The auditor, the board and the donor each want the answer in a different shape, and none of them wants to wait until year end.",
+        "That is why a general accounting package with a spreadsheet beside it tends to break down. The budget lives in one file, the ledger in another, and the check between them is done by a person, usually after the money has already gone out. OneAccounts puts the budget inside the accounting, so the check happens when the bill is entered, not when the report is written."
+      ] },
+      { h: "How a donor grant is set up", p: [
+        "You begin with the structure that matches your donor agreement: the donor, the project, its activities and its locations. You can type these in or import them from Excel. If a row is wrong, the import returns a clear list of errors instead of loading half the data.",
+        "Next comes the budget. Each line is keyed by activity, location and account, and the same key is used for entering transactions, for reports and for the check on every bill. Because one key does all three jobs, the budget you approved is the budget you are held to, with no second list to keep in step."
+      ] },
+      { h: "Budgets that follow the project, not the calendar", p: [
+        "Donors fund a project for its whole life, which rarely lines up with a calendar year or a fiscal year. OneAccounts budgets follow the project period. You can split a budget across the project's months and later move amounts between months without changing the total, which is what you need when a purchase slips from March to May."
+      ] },
+      { h: "The check on every bill", p: [
+        "When a bill is entered against a project, the system looks at the budget line for that activity, location and account. If the bill is within the available balance, it posts. If it is over, it is refused before it posts, and the screen shows the balance that is actually available.",
+        "If the bill is then edited down, the budget is released again, so a corrected entry does not leave a hidden hole in the budget. The point is that overspending is caught by the person entering the bill, while it can still be fixed, instead of by the auditor months later."
+      ] },
+      { h: "Approvals with a history", p: [
+        "Budgets and entries can go through a submit and approve flow. An approver can approve, or reject with a written reason, and every change is kept in a history. When a donor asks who changed a budget line and why, the answer is in the system, not in someone's memory."
+      ] },
+      { h: "Reports your donor and auditor will ask for", p: [
+        "The main report is Budget vs Actual: the budget, the actual spending and the variance, by activity and location, on screen and as a PDF. Beside it you have the full set of core accounting reports: trial balance, profit and loss, balance sheet and general ledger.",
+        "Every figure can be opened down to the ledger, then the journal entry, then the original document. That drill-down is what turns a report into evidence."
+      ], list: [
+        "Budget vs Actual by activity and location",
+        "Donor balances on the NGO dashboard",
+        "Trial balance, profit and loss and balance sheet",
+        "General ledger and journal, with drill-down to the document"
+      ] },
+      { h: "Who it suits", p: [
+        "OneAccounts suits NGOs and project-based organisations in Pakistan that manage several grants, report to more than one donor and want the budget control built into daily entry. It is priced in rupees per user per month, with a ten-day free trial and help bringing over your opening balances.",
+        "If you run a single small grant and keep it in a spreadsheet that works for you, you may not need this yet. If you are juggling donors, locations and approvals, it is built for that."
+      ] },
     ],
   },
   {
