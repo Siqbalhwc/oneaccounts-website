@@ -40,15 +40,23 @@ export function ExampleCard({ title, head, rows, note }: { title: string; head?:
   )
 }
 
+const ALSO = [
+  { h: "/solutions/construction-accounting-software", t: "Construction company accounting", d: "Site budgets and investor capital" },
+  { h: "/solutions/service-business-accounting", t: "Service business accounting", d: "Invoices, bills, receipts and payments" },
+  { h: "/solutions/inventory-management-software", t: "Inventory management software", d: "Stock check and average costing" },
+  { h: "/solutions/rental-property-accounting", t: "Rental property accounting", d: "Rent, deposits and the owner ledger" },
+  { h: "/solutions/accounting-software-pakistan", t: "Accounting software for Pakistan", d: "Priced in rupees, with withholding tax inside the entry" },
+]
+
 export function AlsoBuiltFor() {
   return (
     <section className="hx-also"><div className="wrap">
-      <b>Also built for</b>
-      <Link className="hx-link" href="/solutions/construction-accounting-software">Construction company accounting, with site budgets and investor capital</Link>
-      <Link className="hx-link" href="/solutions/service-business-accounting">Service business accounting</Link>
-      <Link className="hx-link" href="/solutions/inventory-management-software">Inventory management software</Link>
-      <Link className="hx-link" href="/solutions/rental-property-accounting">Rental property accounting</Link>
-      <Link className="hx-link" href="/solutions/accounting-software-pakistan">Accounting software for Pakistan</Link>
+      <div className="hx-head"><h2>Also built for</h2></div>
+      <div className="hx-alsogrid">
+        {ALSO.map((a) => (
+          <Link className="hx-alsoitem" href={a.h} key={a.h}><b>{a.t}</b><span>{a.d}</span></Link>
+        ))}
+      </div>
     </div></section>
   )
 }
@@ -62,7 +70,7 @@ export function HomePricing() {
   return (
     <section className="hx-price" id="pricing"><div className="wrap">
       <div className="hx-head"><h2>Pricing in rupees</h2><p>Ten days free, no credit card. Then a flat rate per user per month. Add-ons such as payroll are priced separately.</p></div>
-      <div className="hx-rows">
+      <div className="hx-plans">
         {rows.map((r) => (
           <div className="hx-prow" key={r.n}>
             <div className="a"><h3>{r.n}</h3><span>{r.w}</span></div>
