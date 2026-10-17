@@ -561,3 +561,11 @@
     .hx-back{min-height:32px; font-size:14px}
     .hx-foot{font-size:13px}
   }
+
+  /* floating WhatsApp button (every public page) */
+  .wa-float{position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:60; display:inline-flex; align-items:center; gap:9px; height:52px; padding:0 20px 0 14px; border-radius:999px; background:#0F8040; color:#fff; text-decoration:none; font:600 15px/1 var(--font-body,inherit); box-shadow:0 6px 18px rgba(11,10,92,.22),0 1px 3px rgba(0,0,0,.18); transition:background .15s, transform .15s}
+  .wa-float svg{width:28px; height:28px; flex:none}
+  .wa-float:hover{background:#0B6B35; transform:translateY(-1px)}
+  .wa-float:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
+  @media (max-width:520px){.wa-float{height:48px; padding:0 16px 0 12px; font-size:14px; right:max(12px,env(safe-area-inset-right)); bottom:max(12px,env(safe-area-inset-bottom))}.wa-float svg{width:26px; height:26px}}
+  @media print{.wa-float{display:none}}
