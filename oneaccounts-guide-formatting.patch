@@ -1,0 +1,79 @@
+diff --git a/app/globals.css b/app/globals.css
+index 387a81d..e1297cb 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -243,11 +243,17 @@
+   .cta-band{background:var(--navy);border-radius:20px;padding:64px 56px;text-align:center}
+   .cta-band h2{font-size:clamp(24px,3vw,32px);color:#fff;margin-bottom:12px}.cta-band p{color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 28px;font-size:15.5px;line-height:1.6}
+   .cta-band .row{display:flex;gap:22px;justify-content:center;align-items:center;flex-wrap:wrap}.cta-band .btn-secondary{color:#fff;border-color:#fff}
+-  .prose{max-width:720px;margin:0 auto;font-size:17.5px;line-height:1.8;color:var(--ink)}
+-  .prose h2{font-size:28px;color:var(--navy);margin:44px 0 12px}.prose h3{font-size:21px;color:var(--navy);margin:30px 0 8px}.prose p{margin:0 0 18px}
++  .prose{max-width:720px;margin:0 auto;font-size:17px;line-height:1.62;color:var(--ink);text-align:left;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
++  /* Justified text on tablets and computers. On narrow phone screens justified lines leave wide gaps between words, so phones keep left-aligned text. */
++  @media (min-width:700px){.prose{text-align:justify}}
++  .prose h2{font-size:28px;line-height:1.25;color:var(--navy);margin:36px 0 10px;text-align:left;hyphens:none}.prose h3{font-size:21px;line-height:1.3;color:var(--navy);margin:26px 0 8px;text-align:left;hyphens:none}.prose p{margin:0 0 13px}
+   .prose a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+-  .prose ul,.prose ol{padding-left:22px;margin-bottom:18px}.prose li{margin:6px 0}.prose blockquote{border-left:4px solid var(--gold);margin:24px 0;padding:4px 20px;color:var(--ink-soft)}
+-  .prose table{border-collapse:collapse;width:100%;font-size:15px;margin-bottom:18px}.prose th,.prose td{border:1px solid var(--hairline);padding:9px 12px;text-align:left}.prose th{background:var(--cream)}
++  .prose ul,.prose ol{padding-left:22px;margin:0 0 14px}.prose li{margin:3px 0}.prose blockquote{border-left:4px solid var(--gold);margin:20px 0;padding:2px 20px;color:var(--ink-soft)}
++  .prose .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:6px 0 18px;border:1px solid var(--hairline);border-radius:8px;background:#fff}
++  .prose table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.45;margin:0;hyphens:none}
++  .prose th,.prose td{border:0;border-bottom:1px solid var(--hairline);padding:8px 14px;text-align:left;vertical-align:top}
++  .prose th{background:rgba(11,10,92,.07);color:var(--navy);font-weight:700;white-space:nowrap}
++  .prose tbody tr:nth-child(even) td{background:rgba(11,10,92,.025)}.prose tr:last-child td{border-bottom:0}
+   .prose code{background:rgba(11,10,92,.06);padding:2px 6px;border-radius:4px;font-size:.9em}
+   .prose img{max-width:100%;height:auto;border-radius:9px;margin:8px 0 22px}.prose h2,.prose h3{scroll-margin-top:90px}
+   .form{display:grid;gap:14px}.form label{font-size:13px;font-weight:600;color:var(--navy);display:grid;gap:6px}
+diff --git a/lib/markdown.ts b/lib/markdown.ts
+index 0b2c155..c6f26d2 100644
+--- a/lib/markdown.ts
++++ b/lib/markdown.ts
+@@ -4,6 +4,38 @@ import { youtubeId, ytThumb } from "@/lib/media"
+ 
+ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")
+ 
++// Tables pasted from Word, Google Docs or Excel arrive as lines whose cells are separated by tab characters.
++// Markdown does not know those, so they showed up as plain lines. Turn a block of two or more consecutive
++// tab-separated lines with the same number of cells into a Markdown table. Anything else is left exactly as written
++// (code blocks, single lines, lines with different cell counts).
++export function tabsToTables(md: string): string {
++  const lines = md.replace(/\r\n?/g, "\n").split("\n")
++  const out: string[] = []
++  let fence = false, i = 0
++  const cells = (l: string) => l.split("\t").map((c) => c.trim())
++  // The first cell must have text, so lines that merely start with an indent (a tab) are never treated as a table.
++  const isRow = (l: string) => l.includes("\t") && cells(l).length >= 2 && cells(l)[0] !== ""
++  while (i < lines.length) {
++    const l = lines[i]
++    if (/^\s*(```|~~~)/.test(l)) { fence = !fence; out.push(l); i++; continue }
++    if (!fence && isRow(l)) {
++      const width = cells(l).length
++      let j = i
++      while (j < lines.length && isRow(lines[j]) && cells(lines[j]).length === width) j++
++      if (j - i >= 2) {
++        const row = (r: string) => "| " + cells(r).map((c) => c.replace(/\|/g, "\\|")).join(" | ") + " |"
++        if (out.length && out[out.length - 1].trim() !== "") out.push("")
++        out.push(row(lines[i]), "|" + " --- |".repeat(width))
++        for (let k = i + 1; k < j; k++) out.push(row(lines[k]))
++        out.push("")
++        i = j; continue
++      }
++    }
++    out.push(l); i++
++  }
++  return out.join("\n")
++}
++
+ // Headings get anchor ids (for the "In this guide" contents list) and every image gets
+ // alt text (its own, or the guide title) plus lazy loading.
+ export function renderMd(md: string, altFallback = ""): string {
+@@ -25,5 +57,7 @@ export function renderMd(md: string, altFallback = ""): string {
+       },
+     },
+   })
+-  return m.parse(md, { async: false }) as string
++  // Each table sits in a scrolling box, so a wide table slides sideways on a phone instead of breaking the page.
++  const html = m.parse(tabsToTables(md), { async: false }) as string
++  return html.replace(/<table>/g, '<div class="tbl"><table>').replace(/<\/table>/g, "</table></div>")
+ }
+\ No newline at end of file

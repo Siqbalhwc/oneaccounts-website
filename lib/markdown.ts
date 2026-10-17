@@ -4,6 +4,38 @@ import { youtubeId, ytThumb } from "@/lib/media"
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")
 
+// Tables pasted from Word, Google Docs or Excel arrive as lines whose cells are separated by tab characters.
+// Markdown does not know those, so they showed up as plain lines. Turn a block of two or more consecutive
+// tab-separated lines with the same number of cells into a Markdown table. Anything else is left exactly as written
+// (code blocks, single lines, lines with different cell counts).
+export function tabsToTables(md: string): string {
+  const lines = md.replace(/\r\n?/g, "\n").split("\n")
+  const out: string[] = []
+  let fence = false, i = 0
+  const cells = (l: string) => l.split("\t").map((c) => c.trim())
+  // The first cell must have text, so lines that merely start with an indent (a tab) are never treated as a table.
+  const isRow = (l: string) => l.includes("\t") && cells(l).length >= 2 && cells(l)[0] !== ""
+  while (i < lines.length) {
+    const l = lines[i]
+    if (/^\s*(```|~~~)/.test(l)) { fence = !fence; out.push(l); i++; continue }
+    if (!fence && isRow(l)) {
+      const width = cells(l).length
+      let j = i
+      while (j < lines.length && isRow(lines[j]) && cells(lines[j]).length === width) j++
+      if (j - i >= 2) {
+        const row = (r: string) => "| " + cells(r).map((c) => c.replace(/\|/g, "\\|")).join(" | ") + " |"
+        if (out.length && out[out.length - 1].trim() !== "") out.push("")
+        out.push(row(lines[i]), "|" + " --- |".repeat(width))
+        for (let k = i + 1; k < j; k++) out.push(row(lines[k]))
+        out.push("")
+        i = j; continue
+      }
+    }
+    out.push(l); i++
+  }
+  return out.join("\n")
+}
+
 // Headings get anchor ids (for the "In this guide" contents list) and every image gets
 // alt text (its own, or the guide title) plus lazy loading.
 export function renderMd(md: string, altFallback = ""): string {
@@ -25,5 +57,7 @@ export function renderMd(md: string, altFallback = ""): string {
       },
     },
   })
-  return m.parse(md, { async: false }) as string
+  // Each table sits in a scrolling box, so a wide table slides sideways on a phone instead of breaking the page.
+  const html = m.parse(tabsToTables(md), { async: false }) as string
+  return html.replace(/<table>/g, '<div class="tbl"><table>').replace(/<\/table>/g, "</table></div>")
 }
