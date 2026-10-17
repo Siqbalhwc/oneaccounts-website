@@ -1,0 +1,230 @@
+diff --git a/README.md b/README.md
+index 6a25685..0b0279d 100644
+--- a/README.md
++++ b/README.md
+@@ -62,7 +62,7 @@ git push -u origin main
+ - `app/sitemap.ts` has a `PAGES_UPDATED` date. Change it when the wording of a fixed page really changes.
+ - Browser security headers are set in `next.config.ts`. A Content-Security-Policy is not set yet.
+ - "Start Free Trial" goes to `app.oneaccountsbysiqbal.com/login`, as on the current site.
+-- Privacy and Terms are draft text. Please review them.
++- Privacy, Terms and About were rewritten on 17 Oct 2026 (no "draft" label). Have a lawyer review Privacy and Terms, and add refund wording and a company address when decided.
+ - Clicking any in-page link brings that section to the middle of the screen (`components/AnchorScroll.tsx`).
+ 
+ ## Admin login troubleshooting
+diff --git a/app/(site)/about/page.tsx b/app/(site)/about/page.tsx
+new file mode 100644
+index 0000000..980bc46
+--- /dev/null
++++ b/app/(site)/about/page.tsx
+@@ -0,0 +1,47 @@
++import Link from "next/link"
++import { meta } from "@/lib/meta"
++import { SITE } from "@/lib/content"
++import { JsonLd, crumbLd } from "@/lib/seo"
++import { PageHero, SectionHead, FeatureGrid, CtaBand } from "@/components/Sections"
++
++export const metadata = meta(
++  "About OneAccounts | Accounting Software Built in Pakistan",
++  "Cloud accounting and ERP for NGOs, property managers and trading companies in Pakistan, built in Lahore by a finance professional with 15+ years' experience.",
++  "/about",
++)
++
++const POINTS = [
++  { t: "Priced in rupees", d: "Plans are charged in Pakistani rupees per user per month, and the prices are shown openly on the pricing page." },
++  { t: "Try before you pay", d: "Every new company starts with a ten-day free trial and no credit card. We charge only after you have tested the software and confirmed." },
++  { t: "Help with opening balances", d: "We help you bring over your opening balances so you start with your own books, not an empty screen." },
++  { t: "Support where you already are", d: "Message us on WhatsApp, write by email or use the contact form. We reply within the day." },
++]
++
++export default function Page() {
++  return (
++    <>
++      <JsonLd data={crumbLd([["Home", "/"], ["About", "/about"]])} />
++      <PageHero eyebrow="About" crumbs={[["Home", "/"], ["About"]]} title="About OneAccounts" sub="Cloud accounting and ERP for NGOs, property managers and trading companies in Pakistan." />
++      <section style={{ paddingBottom: 40 }}><div className="wrap"><article className="prose">
++        <h2>What OneAccounts is</h2>
++        <p>OneAccounts is accounting software that runs in your web browser. Underneath it keeps proper double-entry books, with the reports finance teams expect: trial balance, profit and loss, balance sheet and general ledger.</p>
++        <p>On top of that core, OneAccounts is shaped for three kinds of organisation. For NGOs it adds donor and project budgets, with a budget check on every bill. For trading companies it adds inventory, with a stock check on every sale and average costing. Property Management is a separate application, with owner ledgers and rent handling, built to the same standard of accounting.</p>
++        <h2>Who it is for</h2>
++        <p>We built it for organisations that want their accounting and daily operations in one place: <Link href="/solutions/ngo-accounting-software">NGOs</Link>, <Link href="/property-management">property managers</Link>, <Link href="/solutions/trading-business-software">trading companies</Link>, and also <Link href="/solutions/service-business-accounting">service organisations</Link> and <Link href="/solutions/construction-accounting-software">construction companies</Link>.</p>
++        <h2>Why we built it</h2>
++        <p>OneAccounts is built by a finance professional with more than fifteen years of work in accounting, budgeting, financial reporting, payroll, cash management and day-to-day business operations, across NGOs, trading companies and service organisations. The aim is peace of mind in a Pakistani ERP: software that is simple by design and professional by nature.</p>
++        <p>The same hands-on experience includes work with Odoo, Oracle Financials, Sage AccPac, QuickBooks and Zoho Books, and OneAccounts has been put to work in a trading company and a property management company. Beyond the software, we help organisations with ERP implementation, requirement gathering, fit-gap analysis and improving their financial processes, so the move from spreadsheets to a proper system goes smoothly.</p>
++      </article></div></section>
++      <section style={{ paddingBottom: 40 }}><div className="wrap">
++        <SectionHead title="How we work with you" sub="Plain terms, in your currency, with a person to talk to." />
++        <FeatureGrid items={POINTS} />
++      </div></section>
++      <section style={{ paddingBottom: 80 }}><div className="wrap"><article className="prose">
++        <h2>Get in touch</h2>
++        <p>Our office is at {SITE.street}, {SITE.city}, {SITE.country}.</p>
++        <p>Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, message us on <a href={SITE.whatsapp} target="_blank" rel="noopener">WhatsApp at {SITE.whatsappDisplay}</a>, or use the <Link href="/contact">contact form</Link> to book a demo. You can also read how we handle information in our <Link href="/privacy">Privacy Policy</Link> and <Link href="/terms">Terms of Service</Link>.</p>
++      </article></div></section>
++      <CtaBand />
++    </>
++  )
++}
+diff --git a/app/(site)/privacy/page.tsx b/app/(site)/privacy/page.tsx
+index f634bf1..afa2e53 100644
+--- a/app/(site)/privacy/page.tsx
++++ b/app/(site)/privacy/page.tsx
+@@ -1,12 +1,34 @@
+ import { meta } from "@/lib/meta"
++import { SITE } from "@/lib/content"
+ import { PageHero } from "@/components/Sections"
+-export const metadata = meta("Privacy Policy | OneAccounts", "How OneAccounts collects, uses and protects information.", "/privacy")
++export const metadata = meta("Privacy Policy | OneAccounts", "How OneAccounts collects, uses and protects information when you visit this website, contact us or start a trial.", "/privacy")
+ export default function Page() {
+-  return (<><PageHero crumbs={[["Home", "/"], ["Privacy"]]} title="Privacy Policy" sub="Draft text. Please review before launch." />
++  return (<><PageHero crumbs={[["Home", "/"], ["Privacy"]]} title="Privacy Policy" sub="How we handle your information. Last updated 17 October 2026." />
+     <section style={{ paddingBottom: 100 }}><div className="wrap"><article className="prose">
+-      <h2>What we collect</h2><p>When you contact us or start a trial we collect the details you give us, such as your name, email, phone number and company name.</p>
+-      <h2>How we use it</h2><p>To reply to you, set up your trial, and support your account. We do not sell your information.</p>
+-      <h2>Your accounting data</h2><p>Inside the software, each company&apos;s records are isolated from every other company&apos;s and are encrypted in transit and at rest.</p>
+-      <h2>Contact</h2><p>Questions about privacy: support@oneaccountsbysiqbal.com.</p>
++      <h2>Who we are</h2>
++      <p>This website and the OneAccounts software are provided by OneAccounts by Siqbal. In this policy, &quot;we&quot; and &quot;us&quot; mean OneAccounts by Siqbal, {SITE.street}, {SITE.city}, {SITE.country}. You can reach us at <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or on WhatsApp at {SITE.whatsappDisplay}.</p>
++
++      <h2>What we collect</h2>
++      <p>When you send the contact form, we collect the details you type in: your name, email, phone number, company name, type of business and your message. When you start a trial, we collect the details you give us to create your account, such as your name, email, phone number and company name.</p>
++      <p>If you message us on WhatsApp, the conversation also takes place on WhatsApp, under WhatsApp&apos;s own terms and privacy policy.</p>
++      <p>We use Google Analytics on this website to see, in aggregate, which pages are visited and how people find us. It may set cookies in your browser. You can block or delete cookies in your browser settings.</p>
++
++      <h2>How we use it</h2>
++      <p>We use your details to reply to you, set up your trial, support your account and tell you about changes that affect your service. We do not sell your information.</p>
++
++      <h2>Your accounting data</h2>
++      <p>Inside the software, each company&apos;s records are isolated from every other company&apos;s and are encrypted in transit and at rest. We use your accounting data only to provide the service to you.</p>
++
++      <h2>Service providers</h2>
++      <p>We use trusted providers to host this website and to store data. They handle information only to provide those services to us.</p>
++
++      <h2>Your choices</h2>
++      <p>You can ask us to show you the personal details we hold about you, correct them, or delete them. Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and we will reply. If you want your company account closed, tell us the same way.</p>
++
++      <h2>Changes to this policy</h2>
++      <p>If we change this policy, we will update the date at the top of this page.</p>
++
++      <h2>Contact</h2>
++      <p>Questions about privacy: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+     </article></div></section></>)
+ }
+diff --git a/app/(site)/terms/page.tsx b/app/(site)/terms/page.tsx
+index 86ec64f..7942b83 100644
+--- a/app/(site)/terms/page.tsx
++++ b/app/(site)/terms/page.tsx
+@@ -1,11 +1,31 @@
++import Link from "next/link"
+ import { meta } from "@/lib/meta"
++import { SITE } from "@/lib/content"
+ import { PageHero } from "@/components/Sections"
+-export const metadata = meta("Terms of Service | OneAccounts", "The terms for using the OneAccounts website and software.", "/terms")
++export const metadata = meta("Terms of Service | OneAccounts", "The terms for using the OneAccounts website and software: trials, payment, your responsibilities and ours.", "/terms")
+ export default function Page() {
+-  return (<><PageHero crumbs={[["Home", "/"], ["Terms"]]} title="Terms of Service" sub="Draft text. Please review before launch." />
++  return (<><PageHero crumbs={[["Home", "/"], ["Terms"]]} title="Terms of Service" sub="The terms for using OneAccounts. Last updated 17 October 2026." />
+     <section style={{ paddingBottom: 100 }}><div className="wrap"><article className="prose">
+-      <h2>Using the service</h2><p>OneAccounts is provided as a subscription service. You are responsible for the accuracy of the data you enter and for keeping your login details safe.</p>
+-      <h2>Trials and payment</h2><p>New companies may receive a free trial. Paid plans are billed per user for the period you choose.</p>
+-      <h2>Contact</h2><p>support@oneaccountsbysiqbal.com.</p>
++      <h2>Using the service</h2>
++      <p>OneAccounts is provided as a subscription service over the internet. By creating an account or using the software you agree to these terms. You are responsible for the accuracy of the data you enter and for keeping your login details safe. Please tell us at once if you think someone else has used your login.</p>
++
++      <h2>Trials and payment</h2>
++      <p>New companies receive a ten-day free trial, with no credit card required, to test the software and confirm it suits them. You can ask us questions on WhatsApp at any time during the trial. We charge only after you have tested the software and confirmed that you want to go ahead. Paid plans are billed in Pakistani rupees, per user for the period you choose, at the prices shown on our <Link href="/pricing">pricing page</Link>. Optional add-ons are priced separately.</p>
++      <p>The terms of service delivery for your organisation are set out in a signed agreement between you and us.</p>
++
++      <h2>Your data</h2>
++      <p>The accounting records you enter are your company&apos;s records. We use them only to provide the service to you, as described in our <Link href="/privacy">Privacy Policy</Link>.</p>
++
++      <h2>Acceptable use</h2>
++      <p>Please use the software only for lawful business purposes. Do not try to access another company&apos;s data, interfere with the service, or share your login with people outside your organisation.</p>
++
++      <h2>Availability and support</h2>
++      <p>We work to keep the service available and to help you when you need it, through WhatsApp, email and the contact form. We may occasionally pause the service for maintenance.</p>
++
++      <h2>Changes</h2>
++      <p>We may update these terms from time to time. The date at the top of this page shows when they were last changed.</p>
++
++      <h2>Contact</h2>
++      <p>Questions about these terms: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+     </article></div></section></>)
+ }
+diff --git a/app/sitemap.ts b/app/sitemap.ts
+index d3d2597..a35a087 100644
+--- a/app/sitemap.ts
++++ b/app/sitemap.ts
+@@ -5,15 +5,23 @@ import { getPosts } from "@/lib/posts"
+ // Search engines use lastmod only when it is honest. Update this date whenever the wording of a
+ // fixed page (home, solutions, pricing, privacy and so on) really changes. Guides use their own saved date.
+ const PAGES_UPDATED = new Date("2026-10-12")
++// About, Privacy and Terms were rewritten on 17 Oct 2026.
++const TRUST_PAGES_UPDATED = new Date("2026-10-17")
++const TRUST_PAGES = ["/about", "/privacy", "/terms"]
++
++// The database stores dates with microseconds (for example 2026-10-05T02:03:36.824879+00:00).
++// Convert every date to the standard form (2026-10-05T02:03:36.824Z) so all entries look the same to Google.
++const safeDate = (v: string | null | undefined, fallback: Date) => { const d = v ? new Date(v) : fallback; return isNaN(d.getTime()) ? fallback : d }
+ 
+ export const revalidate = 3600
+ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+   const posts = await getPosts()
+-  const newestGuide = posts.reduce<Date | null>((d, p) => { const t = new Date(p.updated_at); return !d || t > d ? t : d }, null)
+-  const fixed = ["", "/oneaccounts", "/property-management", "/solutions", "/pricing", "/blog", "/contact", "/privacy", "/terms"]
++  const newestGuide = posts.reduce<Date | null>((d, p) => { const t = safeDate(p.updated_at, PAGES_UPDATED); return !d || t > d ? t : d }, null)
++  const fixed = ["", "/oneaccounts", "/property-management", "/solutions", "/pricing", "/blog", "/contact", "/about", "/privacy", "/terms"]
++  const fixedDate = (p: string) => TRUST_PAGES.includes(p) ? TRUST_PAGES_UPDATED : p === "/blog" && newestGuide && newestGuide > PAGES_UPDATED ? newestGuide : PAGES_UPDATED
+   return [
+-    ...fixed.map((p) => ({ url: SITE.url + p, lastModified: p === "/blog" && newestGuide && newestGuide > PAGES_UPDATED ? newestGuide : PAGES_UPDATED })),
++    ...fixed.map((p) => ({ url: SITE.url + p, lastModified: fixedDate(p) })),
+     ...SOLUTIONS.map((s) => ({ url: `${SITE.url}/solutions/${s.slug}`, lastModified: PAGES_UPDATED })),
+-    ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: p.updated_at })),
++    ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: safeDate(p.updated_at, PAGES_UPDATED) })),
+   ]
+ }
+diff --git a/components/SiteFooter.tsx b/components/SiteFooter.tsx
+index 835c8cc..15a9e52 100644
+--- a/components/SiteFooter.tsx
++++ b/components/SiteFooter.tsx
+@@ -35,12 +35,13 @@ export default function SiteFooter() {
+           <a href={`mailto:${SITE.email}`}><IcMail />{SITE.email}</a>
+           <a href={SITE.whatsapp} target="_blank" rel="noopener"><IcPhone />{SITE.whatsappDisplay}</a>
+           <Link href="/contact">Contact form</Link>
++          <address className="frow" style={{ fontStyle: "normal", display: "block", lineHeight: 1.5 }}>{SITE.street},<br />{SITE.city}, {SITE.country}</address>
+         </div>
+       </div></div></div>
+       <div className="foot-bottom-bar">
+         <span className="signature-inline">Simple by Design. Professional by Nature.</span><span className="fb-dot">&middot;</span>
+         <span className="foot-bottom">&copy; 2026 OneAccounts by Siqbal. All rights reserved.</span><span className="fb-dot">&middot;</span>
+-        <span className="foot-bottom"><Link href="/privacy">Privacy</Link> &nbsp;&middot;&nbsp; <Link href="/terms">Terms</Link></span>
++        <span className="foot-bottom"><Link href="/about">About</Link> &nbsp;&middot;&nbsp; <Link href="/privacy">Privacy</Link> &nbsp;&middot;&nbsp; <Link href="/terms">Terms</Link></span>
+       </div>
+     </footer>
+   )
+diff --git a/lib/content.ts b/lib/content.ts
+index 97731d6..acac674 100644
+--- a/lib/content.ts
++++ b/lib/content.ts
+@@ -8,6 +8,9 @@ export const SITE = {
+   whatsapp: "https://wa.me/923716853677",
+   whatsappDisplay: "+92 371 6853677",
+   email: "support@oneaccountsbysiqbal.com",
++  street: "Noon Avenue, Muslim Town",
++  city: "Lahore",
++  country: "Pakistan",
+   youtube: "https://www.youtube.com/@OneAccountsbySiqbal",
+ }
+ 
+diff --git a/lib/seo.tsx b/lib/seo.tsx
+index 8fabfc7..0b66dc0 100644
+--- a/lib/seo.tsx
++++ b/lib/seo.tsx
+@@ -6,6 +6,8 @@ export function JsonLd({ data }: { data: object | object[] }) {
+ export const orgLd = () => ({
+   "@context": "https://schema.org", "@type": "Organization", name: SITE.name, legalName: "OneAccounts by Siqbal", url: SITE.url,
+   logo: `${SITE.url}/logo.png`, email: SITE.email, slogan: SITE.tagline,
++  telephone: "+92 371 6853677",
++  address: { "@type": "PostalAddress", streetAddress: SITE.street, addressLocality: SITE.city, addressCountry: "PK" },
+   contactPoint: [{ "@type": "ContactPoint", contactType: "customer support", email: SITE.email, telephone: "+92 371 6853677", areaServed: "PK", availableLanguage: ["English", "Urdu"] }],
+   sameAs: [SITE.youtube],
+ })

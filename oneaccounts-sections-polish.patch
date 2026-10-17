@@ -1,0 +1,103 @@
+diff --git a/app/globals.css b/app/globals.css
+index 39bdbb3..387a81d 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -434,27 +434,41 @@
+   .hx-note{background:var(--wash); border-radius:4px; padding:12px 14px; font-size:15px; color:var(--ink)}
+ 
+   /* demos */
+-  .hx-demos{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px}
++  .hx-demos{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:32px 28px}
+   .hx-demo{display:flex; flex-direction:column; gap:10px; min-width:0}
+   .hx-demo .th{position:relative; aspect-ratio:16/9; max-width:100%; background:var(--navy-deep); border-radius:6px; overflow:hidden}
+   .hx-demo .th button{all:unset; cursor:pointer; display:block; width:100%; height:100%; position:relative}
+   .hx-demo .th button:focus-visible{outline:2px solid var(--gold); outline-offset:-4px}
+   .hx-demo .th img,.hx-demo .th iframe{width:100%; height:100%; object-fit:cover; border:0; display:block}
+   .hx-demo .yt-play{width:52px; height:52px; font-size:18px}
+-  .hx-demo b{font-size:16px; color:var(--navy)} .hx-demo span{font-size:14px; color:var(--ink-soft)}
+-
+-  .hx-also{border-top:1px solid var(--hairline); padding:36px 0}
+-  .hx-also .wrap{display:flex; flex-wrap:wrap; gap:4px 40px; align-items:center}
+-  .hx-also b{font-family:'Sora Variable','Sora',sans-serif; font-size:18px; color:var(--navy)}
+-
+-  /* pricing as a rate card */
++  .hx-demo > b,.hx-demo > span{display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden}
++  .hx-demo > b{font-size:16px; line-height:1.35; color:var(--navy); -webkit-line-clamp:2}
++  .hx-demo > span{font-size:14px; line-height:1.5; color:var(--ink-soft); -webkit-line-clamp:2}
++
++  /* also built for: five even cards */
++  .hx-also{border-top:1px solid var(--hairline); padding:56px 0 64px}
++  .hx-also .hx-head{margin-bottom:24px}
++  .hx-alsogrid{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px}
++  .hx-alsoitem{display:flex; flex-direction:column; gap:6px; padding:18px 16px 16px; background:#fff; border:1px solid var(--hairline); border-left:3px solid var(--gold); border-radius:6px; transition:box-shadow .2s ease,transform .2s ease}
++  .hx-alsoitem b{font-family:'Sora Variable','Sora',sans-serif; font-weight:600; font-size:15.5px; line-height:1.3; color:var(--navy)}
++  .hx-alsoitem span{font-size:14px; line-height:1.5; color:var(--ink-soft)}
++  .hx-alsoitem:after{content:"\2192"; margin-top:auto; padding-top:10px; font-weight:600; color:var(--gold-dk)}
++  .hx-alsoitem:hover{box-shadow:0 10px 24px -14px rgba(11,10,92,.35); transform:translateY(-2px)}
++  .hx-alsoitem:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
++  @media (prefers-reduced-motion:reduce){.hx-alsoitem{transition:none}.hx-alsoitem:hover{transform:none}}
++  @media (max-width:1100px){.hx-alsogrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
++  @media (max-width:640px){.hx-alsogrid{grid-template-columns:1fr}}
++
++  /* pricing as a rate card: three even columns, same wrapping on every row */
+   .hx-price{background:#fff; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); padding:72px 0}
+-  .hx-rows{display:flex; flex-direction:column; margin-bottom:28px}
+-  .hx-prow{display:flex; flex-wrap:wrap; gap:12px 40px; padding:26px 0; border-top:1px solid var(--hairline); align-items:baseline}
+-  .hx-prow:last-child{border-bottom:1px solid var(--hairline)}
+-  .hx-prow .a{flex:1 1 260px; min-width:0} .hx-prow .a h3{font-size:20px} .hx-prow .a span,.hx-prow .b span{font-size:14.5px; color:var(--ink-soft)}
+-  .hx-prow .b{flex:0 1 220px; min-width:0} .hx-prow .p{font-family:'Sora Variable','Sora',sans-serif; font-weight:600; font-size:26px; color:var(--navy); font-variant-numeric:tabular-nums}
+-  .hx-prow .c{flex:1.4 1 320px; min-width:0; font-size:16px; line-height:1.55}
++  .hx-rows{margin-bottom:28px}
++  .hx-plans{display:flex; flex-direction:column; margin-bottom:32px; border-top:1px solid var(--hairline)}
++  .hx-prow{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.75fr) minmax(0,2fr); gap:12px 48px; padding:28px 0; border-bottom:1px solid var(--hairline); align-items:start}
++  .hx-prow h3{font-size:20px; line-height:1.25; margin:0 0 6px}
++  .hx-prow .a span,.hx-prow .b span{display:block; font-size:14.5px; line-height:1.45; color:var(--ink-soft)}
++  .hx-prow .p{font-family:'Sora Variable','Sora',sans-serif; font-weight:600; font-size:26px; line-height:1.2; color:var(--navy); white-space:nowrap; font-variant-numeric:tabular-nums; margin-bottom:4px}
++  .hx-prow .c{font-size:16px; line-height:1.55}
++  @media (max-width:860px){.hx-prow{grid-template-columns:minmax(0,1fr); gap:8px; padding:22px 0}}
+ 
+   /* guides index */
+   .hx-guides{background:#fff; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); padding:72px 0}
+diff --git a/components/HomeSections.tsx b/components/HomeSections.tsx
+index 540fb33..e1f97bb 100644
+--- a/components/HomeSections.tsx
++++ b/components/HomeSections.tsx
+@@ -40,15 +40,23 @@ export function ExampleCard({ title, head, rows, note }: { title: string; head?:
+   )
+ }
+ 
++const ALSO = [
++  { h: "/solutions/construction-accounting-software", t: "Construction company accounting", d: "Site budgets and investor capital" },
++  { h: "/solutions/service-business-accounting", t: "Service business accounting", d: "Invoices, bills, receipts and payments" },
++  { h: "/solutions/inventory-management-software", t: "Inventory management software", d: "Stock check and average costing" },
++  { h: "/solutions/rental-property-accounting", t: "Rental property accounting", d: "Rent, deposits and the owner ledger" },
++  { h: "/solutions/accounting-software-pakistan", t: "Accounting software for Pakistan", d: "Priced in rupees, with withholding tax inside the entry" },
++]
++
+ export function AlsoBuiltFor() {
+   return (
+     <section className="hx-also"><div className="wrap">
+-      <b>Also built for</b>
+-      <Link className="hx-link" href="/solutions/construction-accounting-software">Construction company accounting, with site budgets and investor capital</Link>
+-      <Link className="hx-link" href="/solutions/service-business-accounting">Service business accounting</Link>
+-      <Link className="hx-link" href="/solutions/inventory-management-software">Inventory management software</Link>
+-      <Link className="hx-link" href="/solutions/rental-property-accounting">Rental property accounting</Link>
+-      <Link className="hx-link" href="/solutions/accounting-software-pakistan">Accounting software for Pakistan</Link>
++      <div className="hx-head"><h2>Also built for</h2></div>
++      <div className="hx-alsogrid">
++        {ALSO.map((a) => (
++          <Link className="hx-alsoitem" href={a.h} key={a.h}><b>{a.t}</b><span>{a.d}</span></Link>
++        ))}
++      </div>
+     </div></section>
+   )
+ }
+@@ -62,7 +70,7 @@ export function HomePricing() {
+   return (
+     <section className="hx-price" id="pricing"><div className="wrap">
+       <div className="hx-head"><h2>Pricing in rupees</h2><p>Ten days free, no credit card. Then a flat rate per user per month. Add-ons such as payroll are priced separately.</p></div>
+-      <div className="hx-rows">
++      <div className="hx-plans">
+         {rows.map((r) => (
+           <div className="hx-prow" key={r.n}>
+             <div className="a"><h3>{r.n}</h3><span>{r.w}</span></div>

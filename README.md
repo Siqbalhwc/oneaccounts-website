@@ -62,7 +62,7 @@ git push -u origin main
 - `app/sitemap.ts` has a `PAGES_UPDATED` date. Change it when the wording of a fixed page really changes.
 - Browser security headers are set in `next.config.ts`. A Content-Security-Policy is not set yet.
 - "Start Free Trial" goes to `app.oneaccountsbysiqbal.com/login`, as on the current site.
-- Privacy and Terms are draft text. Please review them.
+- Privacy, Terms and About were rewritten on 17 Oct 2026 (no "draft" label). Have a lawyer review Privacy and Terms, and add refund wording and a company address when decided.
 - Clicking any in-page link brings that section to the middle of the screen (`components/AnchorScroll.tsx`).
 
 ## Admin login troubleshooting

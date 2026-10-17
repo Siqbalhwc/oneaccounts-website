@@ -8,6 +8,9 @@ export const SITE = {
   whatsapp: "https://wa.me/923716853677",
   whatsappDisplay: "+92 371 6853677",
   email: "support@oneaccountsbysiqbal.com",
+  street: "Noon Avenue, Muslim Town",
+  city: "Lahore",
+  country: "Pakistan",
   youtube: "https://www.youtube.com/@OneAccountsbySiqbal",
 }
 

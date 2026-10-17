@@ -35,12 +35,13 @@ export default function SiteFooter() {
           <a href={`mailto:${SITE.email}`}><IcMail />{SITE.email}</a>
           <a href={SITE.whatsapp} target="_blank" rel="noopener"><IcPhone />{SITE.whatsappDisplay}</a>
           <Link href="/contact">Contact form</Link>
+          <address className="frow" style={{ fontStyle: "normal", display: "block", lineHeight: 1.5 }}>{SITE.street},<br />{SITE.city}, {SITE.country}</address>
         </div>
       </div></div></div>
       <div className="foot-bottom-bar">
         <span className="signature-inline">Simple by Design. Professional by Nature.</span><span className="fb-dot">&middot;</span>
         <span className="foot-bottom">&copy; 2026 OneAccounts by Siqbal. All rights reserved.</span><span className="fb-dot">&middot;</span>
-        <span className="foot-bottom"><Link href="/privacy">Privacy</Link> &nbsp;&middot;&nbsp; <Link href="/terms">Terms</Link></span>
+        <span className="foot-bottom"><Link href="/about">About</Link> &nbsp;&middot;&nbsp; <Link href="/privacy">Privacy</Link> &nbsp;&middot;&nbsp; <Link href="/terms">Terms</Link></span>
       </div>
     </footer>
   )

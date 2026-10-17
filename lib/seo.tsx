@@ -6,6 +6,8 @@ export function JsonLd({ data }: { data: object | object[] }) {
 export const orgLd = () => ({
   "@context": "https://schema.org", "@type": "Organization", name: SITE.name, legalName: "OneAccounts by Siqbal", url: SITE.url,
   logo: `${SITE.url}/logo.png`, email: SITE.email, slogan: SITE.tagline,
+  telephone: "+92 371 6853677",
+  address: { "@type": "PostalAddress", streetAddress: SITE.street, addressLocality: SITE.city, addressCountry: "PK" },
   contactPoint: [{ "@type": "ContactPoint", contactType: "customer support", email: SITE.email, telephone: "+92 371 6853677", areaServed: "PK", availableLanguage: ["English", "Urdu"] }],
   sameAs: [SITE.youtube],
 })
