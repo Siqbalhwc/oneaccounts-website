@@ -5,6 +5,8 @@ import { getPosts } from "@/lib/posts"
 // Search engines use lastmod only when it is honest. Update this date whenever the wording of a
 // fixed page (home, solutions, pricing, privacy and so on) really changes. Guides use their own saved date.
 const PAGES_UPDATED = new Date("2026-10-12")
+// The NGO solution page gained its reports, withholding tax, payroll and controls sections on 19 Oct 2026.
+const NGO_PAGE_UPDATED = new Date("2026-10-19")
 // About, Privacy and Terms were rewritten on 17 Oct 2026.
 const TRUST_PAGES_UPDATED = new Date("2026-10-17")
 const TRUST_PAGES = ["/about", "/privacy", "/terms"]
@@ -21,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fixedDate = (p: string) => TRUST_PAGES.includes(p) ? TRUST_PAGES_UPDATED : p === "/blog" && newestGuide && newestGuide > PAGES_UPDATED ? newestGuide : PAGES_UPDATED
   return [
     ...fixed.map((p) => ({ url: SITE.url + p, lastModified: fixedDate(p) })),
-    ...SOLUTIONS.map((s) => ({ url: `${SITE.url}/solutions/${s.slug}`, lastModified: PAGES_UPDATED })),
+    ...SOLUTIONS.map((s) => ({ url: `${SITE.url}/solutions/${s.slug}`, lastModified: s.slug === "ngo-accounting-software" ? NGO_PAGE_UPDATED : PAGES_UPDATED })),
     ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: safeDate(p.updated_at, PAGES_UPDATED) })),
   ]
 }

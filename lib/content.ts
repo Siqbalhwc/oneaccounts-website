@@ -115,7 +115,7 @@ export const SOLUTIONS: Solution[] = [
     name: "NGO",
     h1: "NGO accounting software with project and donor budgets",
     metaTitle: "NGO Accounting Software with Donor Budgets | OneAccounts",
-    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, approvals and Budget vs Actual reports. Free trial.",
+    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, approvals, and Budget vs Actual and overspent reports. Free trial.",
     intro: "Donors fund a project once, for its whole life. OneAccounts follows that: you set the budget by activity, location and account, and every bill is checked against it before it posts.",
     points: [
       { t: "Donors, projects, activities, locations", d: "Set them up by hand or import them from Excel, with a clear error list if something is wrong." },
@@ -130,6 +130,10 @@ export const SOLUTIONS: Solution[] = [
       { q: "Is the budget tied to a calendar year?", a: "No. Budgets follow the project period, because donors fund a project for its whole duration." },
       { q: "Can I import donors, projects and activities from Excel?", a: "Yes. You can import them from Excel, and if a row is wrong you get a clear error list." },
       { q: "Can I report to more than one donor?", a: "Yes. Each donor and project has its own budget, and Budget vs Actual can be viewed by activity and location." },
+      { q: "Which NGO reports are included?", a: "Budget summary, Budget vs Actual, Overspent projects, Remaining funds and Spending detail, each as PDF and Excel, plus a project profit and loss by account in Excel. The core accounting reports are included as well." },
+      { q: "Does OneAccounts do restricted and unrestricted fund accounting?", a: "Not as a separate fund-accounting module. OneAccounts tracks every expense by donor, project, activity and location against an approved budget, which is how most project-funded NGOs are asked to report. If a donor requires fund-by-fund statements, ask us to show your scenario before you decide." },
+      { q: "Can I keep books in a foreign currency?", a: "Books are kept in Pakistani rupees. A grant received in another currency is recorded at the rupee value you book it at." },
+      { q: "Are payroll and withholding tax included?", a: "They are optional add-on modules, together with Fixed assets. The NGO plan includes projects, donors, budgets, approvals and the core accounting reports." },
     ],
     sections: [
       { h: "Why NGO accounting is different from business accounting", p: [
@@ -158,6 +162,28 @@ export const SOLUTIONS: Solution[] = [
         "Donor balances on the NGO dashboard",
         "Trial balance, profit and loss and balance sheet",
         "General ledger and journal, with drill-down to the document"
+      ] },
+      { h: "The NGO reports, one by one", p: [
+        "Beyond Budget vs Actual, the NGO side of OneAccounts has reports built for the questions finance managers and donors ask most. You reach them from the NGO dashboard and by drilling down from the figures.",
+      ], list: [
+        "Budget summary: every budget line by project, donor, activity, location and account",
+        "Budget vs Actual: pick a donor and a project and see budget, actual and variance by activity, with subtotals, and open any figure down to the entries behind it",
+        "Overspent projects: the projects where spending has passed the budget",
+        "Remaining funds: what is left to spend on each project",
+        "Spending detail: every expense line by project, donor, activity and location, linked to its journal entry",
+        "Project profit and loss by account, as an Excel file"
+      ] },
+      { h: "Where a report goes", p: [
+        "Budget summary, Budget vs Actual, Overspent projects, Remaining funds and Spending detail can be saved as a PDF to send to a donor or as an Excel file to work on further. Because every line already carries its donor, project, activity and location, there is no re-tagging at report time."
+      ] },
+      { h: "Withholding tax on vendor payments", p: [
+        "NGOs pay many vendors, and many of those payments carry withholding tax. With the Tax management add-on you set up tax codes and rates once, and a vendor bill carries its withholding. When you pay, you enter the amount that left the bank. The tax is worked out and both sides are posted, so the supplier balance and the tax payable agree.",
+        "The rates and rules are yours to set, with your tax advisor. OneAccounts records and calculates the withholding; it does not file returns for you."
+      ] },
+      { h: "Payroll, assets and the controls auditors look for", p: [
+        "Payroll is an optional add-on: employees, attendance, leave, loans and advances, and payroll runs that go through approval before they post. Deductions such as tax are set up as components you control.",
+        "The Fixed assets add-on keeps an asset register with monthly depreciation, transfer between locations and disposal, which suits donor-funded equipment that must be accounted for.",
+        "For control, access is role-based (admin, accountant and viewer, with a permissions screen), every change is kept in an audit log, and you can lock a closed accounting period so it cannot be changed afterwards."
       ] },
       { h: "Who it suits", p: [
         "OneAccounts suits NGOs and project-based organisations in Pakistan that manage several grants, report to more than one donor and want the budget control built into daily entry. It is priced in rupees per user per month, with a ten-day free trial and help bringing over your opening balances.",
