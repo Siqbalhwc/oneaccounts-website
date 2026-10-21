@@ -319,6 +319,8 @@ export const PM_FEATURES = [
   ["Owners, tenants and leases", "Charges, roommates and facility details stay with the lease."],
   ["Property reports", "Occupancy, rent, deposits and owner statements, straight from the books."],
   ["Rent invoicing", "Batch invoices and PDF receipts."],
+  ["Utility bills", "Upload the month\u2019s electricity, water and gas amounts and they land on the invoices."],
+  ["Tenant ledger and receivables", "Opening balance, invoices, payments and what is still owed, apartment by apartment."],
   ["Security deposits", "Receive, hold and settle with deductions."],
   ["Expenses and staff", "Building expenses, staff and salary payments."],
   ["Owner ledger", "Statements, settlement and payout."],

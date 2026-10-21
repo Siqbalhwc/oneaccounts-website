@@ -8,6 +8,7 @@ function productFor(category: string | null) {
   const c = (category || "").toLowerCase()
   if (c.includes("propert") || c.includes("rent")) return { href: "/property-management", label: "OneAccounts Property Management", text: "Buildings, tenants, leases, rent and owner statements, posted into real double-entry accounts." }
   if (c.includes("ngo") || c.includes("budget") || c.includes("donor")) return { href: "/solutions/ngo-accounting-software", label: "NGO accounting software", text: "Projects, donor budgets and a budget check on every bill before it posts." }
+  if (c.includes("trading")) return { href: "/solutions/trading-business-software", label: "Trading ERP software", text: "Accounting plus stock: a stock check on every sale, average costing, cash sales, returns and a product ledger." }
   if (c.includes("inventory") || c.includes("stock")) return { href: "/solutions/inventory-management-software", label: "Inventory management software", text: "Stock check on every sale and average costing, connected to your accounts." }
   if (c.includes("construction")) return { href: "/solutions/construction-accounting-software", label: "Construction accounting software", text: "Site budgets, bill validation and investor profit share." }
   return { href: "/solutions/accounting-software-pakistan", label: "Accounting software for Pakistan", text: "Cloud accounting and ERP in rupees, with withholding tax, payroll and inventory." }
