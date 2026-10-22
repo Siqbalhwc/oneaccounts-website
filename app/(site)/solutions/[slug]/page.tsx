@@ -15,6 +15,7 @@ const GUIDE_MATCH: Record<string, { match: RegExp; title: string }> = {
   "trading-business-software": { match: /trading|inventory|stock/i, title: "Trading and stock guides" },
   "inventory-management-software": { match: /trading|inventory|stock/i, title: "Trading and stock guides" },
   "rental-property-accounting": { match: /propert|rent/i, title: "Property management guides" },
+  "construction-accounting-software": { match: /construction/i, title: "Construction accounting guides" },
   "accounting-software-pakistan": { match: /tax/i, title: "Tax and accounting guides" },
 }
 

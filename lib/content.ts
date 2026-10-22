@@ -72,12 +72,17 @@ export const SOLUTIONS: Solution[] = [
       { t: "Cash sales", d: "Sell for cash directly, with partial payment and discount, without going through receivables." },
       { t: "Sales and purchase returns", d: "Returns reverse the stock and the accounts together." },
       { t: "Product ledger", d: "Every movement of every product, in order, on screen and in PDF." },
+      { t: "Customer rate history", d: "Choose a customer and a product on an invoice and see the last rates you charged that customer." },
+      { t: "Withholding tax at payment", d: "Pick the tax code on the supplier bill. At payment the gross, the tax and the net are worked out for you, part payments included." },
+      { t: "Quantity, rate or total", d: "Enter any two on a sale line and the third is worked out, so a customer can buy by weight, by amount or by lot price." },
     ],
     faq: [
       { q: "Is OneAccounts a trading ERP?", a: "Yes. It combines accounting with inventory for trading businesses: stock is checked on every sale, valued on average cost, and every movement is recorded in the product ledger." },
       { q: "Which costing method does OneAccounts use for stock?", a: "Average costing. Each purchase updates the average cost, and sales are costed at that average." },
       { q: "Does it stop me selling stock I do not have?", a: "Yes. The system checks available stock when you enter a sale." },
       { q: "Can I import my products?", a: "Yes. CSV import and export is available, and we help you bring over opening balances." },
+      { q: "Can I see what I charged a customer before?", a: "Yes. On a sales invoice, choose the customer and the product and the last rates you charged that customer for it are shown, with the invoice number and date." },
+      { q: "Can I sell by amount, for example Rs 500 of an item?", a: "Yes. Every line has quantity, rate and total boxes, and you choose which one is calculated. Enter the total and the rate and the quantity is worked out." },
     ],
     sections: [
       { h: "Why traders need accounting and stock in one place", p: [
@@ -101,6 +106,11 @@ export const SOLUTIONS: Solution[] = [
         "Cash sales with partial payment and discount",
         "Returns that reverse stock and accounts together",
         "Product ledger with every movement in order"
+      ] },
+      { h: "Less typing at the counter and the credit desk", p: [
+        "When a regular customer calls, choosing the customer and the product on an invoice shows the last rates you charged that customer, with the invoice number and date. No one has to guess or search old invoices.",
+        "On every sale line you can enter any two of quantity, rate and total and the third is worked out. A customer who asks for Rs 500 of sugar gets the right weight, and a customer who agrees a price for the whole lot gets the right rate. The same works on credit invoices and purchase bills.",
+        "When you pay a supplier, the withholding tax is worked out for you. Pick the tax code on the bill and, at payment, the gross, the tax and the net are calculated, including part payments. This needs the Tax management add-on."
       ] },
       { h: "Getting your products in", p: [
         "You can import and export products as CSV, and we help you bring over opening balances so the first day's figures match your closing figures from the old system."
@@ -196,7 +206,7 @@ export const SOLUTIONS: Solution[] = [
     name: "Construction",
     h1: "Construction company accounting with site budgets and investor capital",
     metaTitle: "Construction Accounting with Site Budgets | OneAccounts",
-    metaDesc: "Construction accounting software with a budget for each site, validation on every bill, and investor capital with profit share. Free trial.",
+    metaDesc: "Construction and real estate accounting for Pakistan: site budgets checked on every bill, plot and unit booking on instalments, investor capital. Free trial.",
     intro: "Set up each site as a project with its activities and a budget. Every bill and invoice is then validated against that site's budget before it posts, and investors are tracked by their share of each site.",
     points: [
       { t: "Projects (sites) and activities", d: "Organise spending by site, location and activity, the way a project actually runs." },
@@ -205,11 +215,18 @@ export const SOLUTIONS: Solution[] = [
       { t: "Investor profit share", d: "Assign investors to a site by percentage, with the total held at exactly 100 percent." },
       { t: "Investor capital", d: "Target contribution from the site budget, with every contribution recorded and editable." },
       { t: "Construction dashboard", d: "Sites, spending against budget and investors in one view." },
+      { t: "Plot and unit booking", d: "Sell a unit or plot with an advance and a schedule of instalments, and collect against it." },
+      { t: "Budget against actual", d: "Budget, actual and variance side by side for every site, cost code and zone." },
+      { t: "Purchase order to payment", d: "Approved purchase orders, supplier bills and payments in one chain, with assets and materials alongside." },
     ],
     faq: [
       { q: "Is the budget checked separately for every site?", a: "Yes. Each site has its own budget by activity, location and account, and every bill and invoice is validated against it." },
       { q: "Does editing an investor's percentage change the books?", a: "No. Profit share and capital contributed are kept separate, so changing a percentage never touches a journal entry." },
       { q: "What if I correct a contribution?", a: "A corrected contribution reverses the old entry and posts a new one. Nothing is deleted, so the audit trail stays complete." },
+      { q: "Can I sell plots or units on instalments?", a: "Yes. A booking records the customer, the site and the unit or plot, the total price, the advance and the number of instalments. The sale is invoiced, the advance is received, and an instalment schedule with due dates is created." },
+      { q: "How are customer payments applied to instalments?", a: "You enter the amount received once. It is applied to the oldest unpaid instalment first and then to the next, and overdue instalments are marked." },
+      { q: "Can I compare budget with actual for each site?", a: "Yes. The Budget vs Actual report shows budget, actual and variance for each site, cost code and zone, and any line opens into the spending behind it." },
+      { q: "Do purchase orders need approval?", a: "With the Purchase orders add-on, an order starts as a draft and is approved by a user who has the approval permission. The supplier bill can then be raised from it." },
     ],
     sections: [
       { h: "Every site is its own small business", p: [
@@ -233,8 +250,26 @@ export const SOLUTIONS: Solution[] = [
         "Investor profit share held at 100 percent",
         "Investor capital with every contribution recorded"
       ] },
+      { h: "Selling plots and units on instalments", p: [
+        "Developers and housing projects sell on instalments, and the accounts have to follow every rupee. A booking in OneAccounts joins a customer, a site and a unit or plot. You enter the total price, the advance and the number of instalments. The sale is invoiced, the advance is received into the bank account you choose, and a schedule is created with a due date for each instalment.",
+        "When a customer pays, you enter the amount once. It is applied to the oldest unpaid instalment first and carried on to the next, and overdue instalments are marked. The bookings list shows each customer's balance still to be collected."
+      ], list: [
+        "Units and plots set up like products, grouped by site",
+        "Advance received at booking, with the schedule created for you",
+        "Payments applied to the oldest unpaid instalment first",
+        "Overdue instalments marked on the schedule",
+        "Balance still to collect for every booking"
+      ] },
+      { h: "Budget against actual, by cost code", p: [
+        "Budgets are set by site, cost code and site zone. The Budget vs Actual report puts budget, actual spending and the variance side by side for every line. Overspending shows in red, savings in green, and any line opens into the spending detail behind it.",
+        "Because every bill is checked against the budget before it posts, the report shows what was actually approved, not what someone forgot to enter."
+      ] },
+      { h: "From purchase order to payment", p: [
+        "With the Purchase orders add-on, an order starts as a draft and is approved by a user who has the approval permission. The supplier bill can then be raised from the order, and the payment settles the bill, so every purchase can be followed from order to payment. With the Tax management add-on, withholding tax is worked out when you pay.",
+        "The Fixed assets add-on keeps plant and equipment in a register, with a depreciation schedule, transfers and disposals. The Material management add-on records incoming material on an inward gate pass and keeps a material store."
+      ] },
       { h: "Who it suits", p: [
-        "OneAccounts suits construction and development companies in Pakistan that run more than one site, answer to investors, and want the budget control built into daily entry. It is priced in rupees per user per month, with a ten-day free trial and help bringing over opening balances."
+        "OneAccounts suits construction and real estate development companies in Pakistan that run more than one site, sell on instalments or answer to investors, and want the budget control built into daily entry. It is priced in rupees per user per month, with a ten-day free trial and help bringing over opening balances."
       ] },
     ],
   },
@@ -322,10 +357,10 @@ export const PM_FEATURES = [
   ["Utility bills", "Upload the month\u2019s electricity, water and gas amounts and they land on the invoices."],
   ["Tenant ledger and receivables", "Opening balance, invoices, payments and what is still owed, apartment by apartment."],
   ["Security deposits", "Receive, hold and settle with deductions."],
-  ["Expenses and staff", "Building expenses, staff and salary payments."],
+  ["Expenses and staff", "Building expenses, staff and salary payments, with each staff member\u2019s cost spread across buildings."],
   ["Owner ledger", "Statements, settlement and payout."],
   ["Accounting reports", "Chart of accounts, journal, ledger, trial balance, profit and loss, balance sheet."],
-  ["Backup and import", "Backup, restore and Excel templates for bulk import."],
+  ["Backup and import", "Import buildings, apartments, owners, tenants and leases from Excel templates, and back up and restore your data."],
   ["Roles and audit", "Role-based access and a full audit log."],
 ]
 
