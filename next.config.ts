@@ -18,6 +18,7 @@ const MERGED_GUIDES: [string, string][] = [
   ["ngo-accounting-software-manage-donor-funds-project-budgets-and-financial-reporting-with-on", "/blog/ngo-accounting-software-in-pakistan-donor-funds-project"],
   ["comprehensive-financial-management-and-specialized-ngo-accounting-with-oneaccounts", "/solutions/ngo-accounting-software"],
   ["ngo-accounting-software-a-complete-guide-for-ngos-and-nonprofits", "/blog/ngo-accounting-software-managing-donor-funds-projects-and-financial-transparency"],
+  ["rental-property-accounting-a-practical-guide-to-rent", "/blog/rental-property-accounting-software"],
   ["how-to-choose-the-best-accounting-software-for-an-ngo", "/blog/how-to-choose-the-right-ngo-accounting-software-in-pakistan-a-practical-checklist"],
 ]
 
@@ -32,6 +33,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/:path*", has: [{ type: "host" as const, value: "oneaccountsbysiqbal.com" }], destination: "https://www.oneaccountsbysiqbal.com/:path*", permanent: true },
+      { source: "/solutions/rental-property-accounting", destination: "/property-management", permanent: true },
       ...MERGED_GUIDES.map(([slug, to]) => ({ source: `/blog/${slug}`, destination: to, permanent: true })),
     ]
   },

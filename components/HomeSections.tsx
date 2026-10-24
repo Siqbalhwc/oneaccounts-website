@@ -44,7 +44,7 @@ const ALSO = [
   { h: "/solutions/construction-accounting-software", t: "Construction company accounting", d: "Site budgets and investor capital" },
   { h: "/solutions/service-business-accounting", t: "Service business accounting", d: "Invoices, bills, receipts and payments" },
   { h: "/solutions/inventory-management-software", t: "Inventory management software", d: "Stock check and average costing" },
-  { h: "/solutions/rental-property-accounting", t: "Rental property accounting", d: "Rent, deposits and the owner ledger" },
+  { h: "/property-management", t: "Rental property accounting", d: "Rent, deposits and the owner ledger" },
   { h: "/solutions/accounting-software-pakistan", t: "Accounting software for Pakistan", d: "Priced in rupees, with withholding tax inside the entry" },
 ]
 

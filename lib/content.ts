@@ -7,6 +7,7 @@ export const SITE = {
   propertiesLogin: "https://properties.oneaccountsbysiqbal.com/login", // sign in or create an account
   whatsapp: "https://wa.me/923716853677",
   whatsappDisplay: "+92 371 6853677",
+  propertyDemo: "https://wa.me/923716853677?text=Hello%20OneAccounts%2C%20I%20would%20like%20a%20demo%20of%20Property%20Management.", // demo request on WhatsApp (Property has no free trial)
   email: "support@oneaccountsbysiqbal.com",
   street: "Noon Avenue, Muslim Town",
   city: "Lahore",
@@ -336,25 +337,6 @@ export const SOLUTIONS: Solution[] = [
       { q: "Is there a free trial?", a: "Yes. New companies get a free trial, and no credit card is needed." },
     ],
   },
-  {
-    slug: "rental-property-accounting",
-    name: "Rental property accounting",
-    h1: "Rental property accounting that matches your rent roll",
-    metaTitle: "Rental Property Accounting Software | OneAccounts",
-    metaDesc: "Rent invoices, receipts, security deposits, expenses and owner statements, posted into real double-entry books. Built for landlords and building managers.",
-    intro: "Rent collected is already in the books. Property operations and accounting live in one place, so the owner's statement comes straight from the ledger.",
-    points: [
-      { t: "Rent invoicing", d: "Batch invoices with PDF receipts." },
-      { t: "Security deposits", d: "Receive, hold and settle deposits with deductions." },
-      { t: "Expenses", d: "Record building expenses by category." },
-      { t: "Owner ledger", d: "A running statement per owner, with settlement and payout." },
-      { t: "Full reports", d: "Trial balance, profit and loss, balance sheet and ledger." },
-      { t: "Audit history", d: "Every change is recorded and attributable." },
-    ],
-    faq: [
-      { q: "Is this a separate product?", a: "Yes. OneAccounts Property Management is its own application at its own address, with the same standard of accounting underneath." },
-    ],
-  },
 ]
 
 export const MODULES = [
@@ -375,7 +357,7 @@ export const MODULES = [
 export const PM_FEATURES = [
   ["Buildings and rooms", "Floors, rooms and occupancy history."],
   ["Owners, tenants and leases", "Charges, roommates and facility details stay with the lease."],
-  ["Property reports", "Occupancy, rent, deposits and owner statements, straight from the books."],
+  ["Property reports", "Receipts by head, tenant ledger, room-wise receivables, deposits, expenses and owner statements, straight from the books."],
   ["Rent invoicing", "Batch invoices and PDF receipts."],
   ["Utility bills", "Upload the month\u2019s electricity, water and gas amounts and they land on the invoices."],
   ["Tenant ledger and receivables", "Opening balance, invoices, payments and what is still owed, apartment by apartment."],
@@ -383,7 +365,10 @@ export const PM_FEATURES = [
   ["Expenses and staff", "Building expenses, staff and salary payments, with each staff member\u2019s cost spread across buildings."],
   ["Owner ledger", "Statements, settlement and payout."],
   ["Accounting reports", "Chart of accounts, journal, ledger, trial balance, profit and loss, balance sheet."],
-  ["Backup and import", "Import buildings, apartments, owners, tenants and leases from Excel templates, and back up and restore your data."],
+  ["Import and export", "Import owners, buildings, apartments, tenants, leases, lease charges and journal entries from Excel templates, and export your data to Excel at any time."],
+  ["Lease renewals", "Leases ending soon are listed and alerted. Renew with a new end date and new rates."],
+  ["Facility register", "Vehicle numbers, internet speed, meter numbers and allowed units, kept per tenant."],
+  ["Roommates and residents", "A register of everyone living in a room, with CNIC details."],
   ["Roles and audit", "Role-based access and a full audit log."],
 ]
 

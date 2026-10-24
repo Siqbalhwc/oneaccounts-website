@@ -165,8 +165,8 @@ export function FaqSection({ items = HOME_FAQ, title = "Questions, answered", su
 export function CtaBand({ title = "Start calm. Stay calm.", property = false }: { title?: string; property?: boolean }) {
   return (
     <section className="contact" id="start"><div className="wrap"><div className="cta-band">
-      <h2>{title}</h2><p>{property ? "Sign in or create your Property Management account. Ask us on WhatsApp and we will help you set up your first building." : "Free trial for new companies, no credit card required. We help you bring over your opening balances."}</p>
-      <div className="row"><a className="btn-light" href={property ? SITE.propertiesLogin : `${SITE.app}/login`} target="_blank" rel="noopener">{property ? "Open Property Management" : "Start Free Trial"}</a><a className="btn-secondary" href={SITE.whatsapp} target="_blank" rel="noopener">Talk to us on WhatsApp</a></div>
+      <h2>{title}</h2><p>{property ? "Ask for a demo on WhatsApp and we will show it with your kind of building, then help you set up your first building. Already a customer? Sign in." : "Free trial for new companies, no credit card required. We help you bring over your opening balances."}</p>
+      <div className="row"><a className="btn-light" href={property ? SITE.propertyDemo : `${SITE.app}/login`} target="_blank" rel="noopener">{property ? "Request a demo" : "Start Free Trial"}</a><a className="btn-secondary" href={property ? SITE.propertiesLogin : SITE.whatsapp} target="_blank" rel="noopener">{property ? "Property login" : "Talk to us on WhatsApp"}</a></div>
     </div></div></section>
   )
 }
