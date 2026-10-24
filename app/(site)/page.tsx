@@ -6,9 +6,10 @@ import { PricingBox, CtaBand } from "@/components/Sections"
 import { SectorBlock, ExampleCard, AlsoBuiltFor, HomePricing, GuidesIndex, HomeFaq } from "@/components/HomeSections"
 import HomeTrace from "@/components/HomeTrace"
 import DemoGrid from "@/components/DemoGrid"
+import IntroVideo from "@/components/IntroVideo"
 import Testimonials from "@/components/Testimonials"
 import ScreenshotGallery from "@/components/ScreenshotGallery"
-import { getMedia } from "@/lib/media"
+import { getMedia, youtubeId } from "@/lib/media"
 import { getPosts } from "@/lib/posts"
 
 export const revalidate = 300
@@ -22,6 +23,8 @@ export default async function Home() {
   ])
   const ngoShots = ngo.length ? ngo : anyShots // same gallery as before until NGO pictures are tagged in /admin
   const hasDemo = vids.length > 0
+  // The intro video: the first video marked "Home page (General)" in /admin/media, otherwise the first video.
+  const intro = vids.find((v) => v.product === "General" && youtubeId(v.url)) || vids.find((v) => youtubeId(v.url))
   const faq = FAQ_SHOWN.map((i) => HOME_FAQ[i]).filter(Boolean)
   return (
     <div className="hx">
@@ -33,7 +36,9 @@ export default async function Home() {
           <p className="lead">One cloud ledger where every number opens to the document behind it. Priced in rupees, with withholding tax handled inside the entry.</p>
           <div className="hx-acts">
             <a className="hx-btn" href={`${SITE.app}/login`} target="_blank" rel="noopener">Start free trial</a>
-            <a className="hx-link" href={hasDemo ? "#demos" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })}>{hasDemo ? "Watch the demos" : "Watch the demo"}</a>
+            {intro
+              ? <IntroVideo url={intro.url} title={intro.title} />
+              : <a className="hx-link" href={hasDemo ? "#demos" : SITE.youtube} {...(hasDemo ? {} : { target: "_blank", rel: "noopener" })}>{hasDemo ? "Watch the demos" : "Watch the demo"}</a>}
           </div>
           <p className="hx-small">10 days free. No credit card. We help you bring over your opening balances.</p>
           <p className="hx-small">Donors and budgets for NGOs. Sites and installment plans for construction. Tenants and leases for property. Inventory for traders.</p>
