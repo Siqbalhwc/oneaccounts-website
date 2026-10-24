@@ -5,8 +5,8 @@ import { getPosts } from "@/lib/posts"
 // Search engines use lastmod only when it is honest. Update this date whenever the wording of a
 // fixed page (home, solutions, pricing, privacy and so on) really changes. Guides use their own saved date.
 const PAGES_UPDATED = new Date("2026-10-12")
-// The NGO solution page gained its reports, withholding tax, payroll and controls sections on 19 Oct 2026.
-const NGO_PAGE_UPDATED = new Date("2026-10-19")
+// The NGO solution page gained its reports, withholding tax, payroll, controls, grant reporting and audit sections (19 and 24 Oct 2026).
+const NGO_PAGE_UPDATED = new Date("2026-10-24")
 // The Trading and Construction solution pages gained new sections on 22 Oct 2026.
 const TRADING_CONSTRUCTION_UPDATED = new Date("2026-10-22")
 // About, Privacy and Terms were rewritten on 17 Oct 2026.

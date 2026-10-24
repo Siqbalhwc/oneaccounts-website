@@ -125,7 +125,7 @@ export const SOLUTIONS: Solution[] = [
     name: "NGO",
     h1: "NGO accounting software with project and donor budgets",
     metaTitle: "NGO Accounting Software with Donor Budgets | OneAccounts",
-    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, approvals, and Budget vs Actual and overspent reports. Free trial.",
+    metaDesc: "NGO accounting software for Pakistan: donor and project budgets, a budget check on every bill, donor reporting, approvals and an audit trail. Free trial.",
     intro: "Donors fund a project once, for its whole life. OneAccounts follows that: you set the budget by activity, location and account, and every bill is checked against it before it posts.",
     points: [
       { t: "Donors, projects, activities, locations", d: "Set them up by hand or import them from Excel, with a clear error list if something is wrong." },
@@ -144,6 +144,11 @@ export const SOLUTIONS: Solution[] = [
       { q: "Does OneAccounts do restricted and unrestricted fund accounting?", a: "Not as a separate fund-accounting module. OneAccounts tracks every expense by donor, project, activity and location against an approved budget, which is how most project-funded NGOs are asked to report. If a donor requires fund-by-fund statements, ask us to show your scenario before you decide." },
       { q: "Can I keep books in a foreign currency?", a: "Books are kept in Pakistani rupees. A grant received in another currency is recorded at the rupee value you book it at." },
       { q: "Are payroll and withholding tax included?", a: "They are optional add-on modules, together with Fixed assets. The NGO plan includes projects, donors, budgets, approvals and the core accounting reports." },
+      { q: "Is OneAccounts grant management software?", a: "It looks after the money side of a grant: the donor and project, the budget by activity, location and account, a check on every bill, approvals, and reports on what is spent and what is left. If you need a tool for grant applications and proposals, that is a different kind of software." },
+      { q: "How do I prepare a donor report?", a: "Choose the donor and the project, then open Budget vs Actual for the budget, actual and variance by activity and location, or Remaining funds and Spending detail. Each can be saved as a PDF or an Excel file. The layout is OneAccounts' own, so if your donor requires a fixed template, take the Excel file and fit it into that template." },
+      { q: "Is it suitable for non-profits, trusts and welfare organisations?", a: "Yes, if you are funded by grants or donations and need to show how each project's money was spent. See the answer above on restricted and unrestricted funds if your donor asks for fund-by-fund statements." },
+      { q: "What controls does an NGO audit usually ask about?", a: "OneAccounts has role-based access (admin, accountant and viewer), an audit log of changes, approval history on budgets and entries, locking of a closed accounting period, and drill-down from any report to the ledger, the journal entry and the original document." },
+      { q: "Can we move from Excel to NGO accounting software?", a: "Yes. Donors, projects and activities can be imported from Excel, with a clear error list if a row is wrong, and we help you bring over opening balances so the first day matches your closing figures." },
     ],
     sections: [
       { h: "Why NGO accounting is different from business accounting", p: [
@@ -194,6 +199,24 @@ export const SOLUTIONS: Solution[] = [
         "Payroll is an optional add-on: employees, attendance, leave, loans and advances, and payroll runs that go through approval before they post. Deductions such as tax are set up as components you control.",
         "The Fixed assets add-on keeps an asset register with monthly depreciation, transfer between locations and disposal, which suits donor-funded equipment that must be accounted for.",
         "For control, access is role-based (admin, accountant and viewer, with a permissions screen), every change is kept in an audit log, and you can lock a closed accounting period so it cannot be changed afterwards."
+      ] },
+      { h: "Grant management and donor reporting", p: [
+        "OneAccounts is financial management software for the finance side of a grant. Each grant is set up as a donor and a project, with a budget by activity, location and account. Every bill and entry then carries those same tags, so nothing has to be re-tagged when the report is due.",
+        "Donor reporting becomes a matter of choosing the donor and the project and saving the report you need, such as Budget vs Actual, Remaining funds or Spending detail, as a PDF or an Excel file. If a donor requires its own fixed template, the Excel file is the starting point for filling it in."
+      ] },
+      { h: "Project accounting for NGOs, non-profits and trusts", p: [
+        "Non-profit organisations, welfare trusts and project-based NGOs share one problem: the same money serves several projects and each donor wants to see its own. OneAccounts keeps the books by project, so you can see what each project was budgeted, what it has spent and what remains, and open any figure down to the entry behind it.",
+        "A project profit and loss by account is available as an Excel file for the times the board or a donor asks for the whole picture of one project."
+      ] },
+      { h: "Audit trail and transparency", p: [
+        "Auditors and donors ask the same questions: who approved this, when did it change and where is the document? In OneAccounts the answer is in the system. Budgets and entries keep an approval history, every change is written to an audit log, access is role-based, and a closed accounting period can be locked so it cannot be changed afterwards.",
+        "From any report you can open the ledger, then the journal entry, then the original document, so an auditor can follow a figure to its source without asking you to find a file."
+      ], list: [
+        "Approval history on budgets and entries",
+        "Audit log of changes",
+        "Role-based access: admin, accountant and viewer",
+        "Closed periods locked against change",
+        "Drill-down from report to ledger, entry and document"
       ] },
       { h: "Who it suits", p: [
         "OneAccounts suits NGOs and project-based organisations in Pakistan that manage several grants, report to more than one donor and want the budget control built into daily entry. It is priced in rupees per user per month, with a ten-day free trial and help bringing over your opening balances.",
