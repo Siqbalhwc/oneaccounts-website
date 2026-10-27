@@ -13,6 +13,8 @@ const TRADING_CONSTRUCTION_UPDATED = new Date("2026-10-22")
 const PROPERTY_UPDATED = new Date("2026-10-24")
 // The home page changed on 24 Oct 2026 (intro video button, keyword sections).
 const HOME_UPDATED = new Date("2026-10-24")
+// The Inventory solution page gained its sections and FAQs on 27 Oct 2026.
+const INVENTORY_UPDATED = new Date("2026-10-27")
 // About, Privacy and Terms were rewritten on 17 Oct 2026.
 const TRUST_PAGES_UPDATED = new Date("2026-10-17")
 const TRUST_PAGES = ["/about", "/privacy", "/terms"]
@@ -29,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fixedDate = (p: string) => p === "" ? HOME_UPDATED : p === "/property-management" ? PROPERTY_UPDATED : TRUST_PAGES.includes(p) ? TRUST_PAGES_UPDATED : p === "/blog" && newestGuide && newestGuide > PAGES_UPDATED ? newestGuide : PAGES_UPDATED
   return [
     ...fixed.map((p) => ({ url: SITE.url + p, lastModified: fixedDate(p) })),
-    ...SOLUTIONS.map((s) => ({ url: `${SITE.url}/solutions/${s.slug}`, lastModified: s.slug === "ngo-accounting-software" ? NGO_PAGE_UPDATED : s.slug === "trading-business-software" || s.slug === "construction-accounting-software" ? TRADING_CONSTRUCTION_UPDATED : PAGES_UPDATED })),
+    ...SOLUTIONS.map((s) => ({ url: `${SITE.url}/solutions/${s.slug}`, lastModified: s.slug === "ngo-accounting-software" ? NGO_PAGE_UPDATED : s.slug === "trading-business-software" || s.slug === "construction-accounting-software" ? TRADING_CONSTRUCTION_UPDATED : s.slug === "inventory-management-software" ? INVENTORY_UPDATED : PAGES_UPDATED })),
     ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: safeDate(p.updated_at, PAGES_UPDATED) })),
   ]
 }

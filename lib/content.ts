@@ -316,8 +316,43 @@ export const SOLUTIONS: Solution[] = [
       { t: "Material management", d: "Gate pass and store for companies that receive materials." },
     ],
     faq: [
-      { q: "Which costing method does it use?", a: "Average costing." },
+      { q: "Which costing method does it use?", a: "Average costing. Each purchase updates the average cost of the product, and sales are costed at that average." },
       { q: "Can quantity go negative?", a: "The system checks available stock on sales, and the quantity follows the recorded stock movements." },
+      { q: "Is the inventory connected to the accounts?", a: "Yes. Purchases, sales and returns update stock and the accounts together, so the value of stock on the balance sheet and the cost of goods sold come from the same rule." },
+      { q: "How do I correct a stock quantity that is wrong?", a: "With a recorded stock adjustment, not by overwriting the number. The adjustment shows in the product ledger, so you can see what changed." },
+      { q: "Can I import my products and opening stock?", a: "Yes. CSV import and export is available, and we help you bring over opening balances so the first day's figures match your closing figures from the old system." },
+      { q: "Does it support barcodes, multiple warehouses or batch and expiry tracking?", a: "Not at the moment. OneAccounts inventory is built around the stock register, the stock check on every sale, average costing and the product ledger." },
+    ],
+    sections: [
+      { h: "Inventory that lives inside the accounts", p: [
+        "Stock kept in a separate sheet drifts away from the books. A sale is entered in one place, the quantity is updated (or forgotten) in another, and at month end nobody can say why the stock figure and the balance sheet disagree.",
+        "In OneAccounts every quantity change is a recorded movement, and those movements are part of the accounts. A purchase, a sale or a return updates the stock and the ledgers together, so the shelf and the books describe the same business."
+      ] },
+      { h: "The stock register", p: [
+        "Each product has a unit of measurement, an opening quantity and a live quantity on hand. You see the quantity while you work on an invoice or a bill, next to the unit, so there is no need to leave the screen to look it up."
+      ] },
+      { h: "A stock check before you sell", p: [
+        "When you enter a sale, the system checks the available quantity of each product. You do not sell what you do not have, and quantities do not run below zero by accident."
+      ] },
+      { h: "Average costing", p: [
+        "Stock is valued on the average costing method. Each purchase updates the average cost of the product, and each sale is costed at that average. If you buy 100 units at one price and another 100 at a higher price, the units you sell are costed at the blended figure, and cost of goods sold follows from it."
+      ] },
+      { h: "Adjustments and returns, recorded rather than overwritten", p: [
+        "A wrong quantity is corrected with a recorded adjustment, never by typing over a number. Sales returns and purchase returns reverse the stock and the accounts together, so a returned item is back on the shelf and out of the sales figure in one step."
+      ], list: [
+        "Adjustments recorded with their own entry",
+        "Returns that reverse stock and accounts together",
+        "No silent overwriting of quantities"
+      ] },
+      { h: "The product ledger", p: [
+        "Open any product and see every movement in order: purchase, sale, return, adjustment. It is available on screen and as a PDF. When a quantity looks wrong, this is where you find out why."
+      ] },
+      { h: "Getting your products in", p: [
+        "You can import and export products as CSV, and we help you bring over opening balances so you start with your own stock, not an empty screen."
+      ] },
+      { h: "Who it suits", p: [
+        "Inventory management in OneAccounts suits traders, distributors, wholesalers and shops in Pakistan that want stock and accounts in one system, priced in rupees per user per month with a ten-day free trial. If you also want the full picture for a trading business, see Trading ERP software."
+      ] },
     ],
   },
   {
