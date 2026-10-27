@@ -13,6 +13,9 @@ export const SITE = {
   city: "Lahore",
   country: "Pakistan",
   youtube: "https://www.youtube.com/@OneAccountsbySiqbal",
+  linkedin: "https://www.linkedin.com/company/oneaccounts-by-siqbal/",
+  instagram: "https://www.instagram.com/oneaccountsbysiqbal",
+  facebook: "https://www.facebook.com/share/1KmbmboXEz/",
 }
 
 // Prices are shown publicly on the home page and /pricing (Shahid, Oct 2026: experts advise showing prices up front).

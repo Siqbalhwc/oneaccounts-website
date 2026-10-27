@@ -9,13 +9,13 @@ export const orgLd = () => ({
   telephone: "+92 371 6853677",
   address: { "@type": "PostalAddress", streetAddress: SITE.street, addressLocality: SITE.city, addressCountry: "PK" },
   contactPoint: [{ "@type": "ContactPoint", contactType: "customer support", email: SITE.email, telephone: "+92 371 6853677", areaServed: "PK", availableLanguage: ["English", "Urdu"] }],
-  sameAs: [SITE.youtube],
+  sameAs: [SITE.youtube, SITE.linkedin, SITE.instagram, SITE.facebook],
 })
 export const websiteLd = () => ({ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url, inLanguage: "en" })
 export const softwareLd = () => ({
   "@context": "https://schema.org", "@type": "SoftwareApplication", name: "OneAccounts",
   applicationCategory: "BusinessApplication", operatingSystem: "Web", url: SITE.url,
-  description: "Cloud ERP for growing businesses and NGOs: accounting, inventory, and payroll that stay clear, current, and calm.",
+  description: "Cloud accounting and ERP in Pakistan for NGOs, trading, service and construction companies: double-entry accounting, inventory with a stock check on every sale, donor and site budgets, payroll and withholding tax, priced in rupees.",
   offers: [
     { "@type": "Offer", name: "Free trial", price: "0", priceCurrency: "PKR", description: "Free trial, no credit card required" },
     { "@type": "Offer", name: "Service and Trading", priceCurrency: "PKR", priceSpecification: { "@type": "UnitPriceSpecification", price: "3000", priceCurrency: "PKR", unitText: "per user per month" } },

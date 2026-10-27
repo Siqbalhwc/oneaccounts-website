@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import logo from "@/assets/logo.png"
 import { SITE } from "@/lib/content"
-import { IcPlay, IcMail, IcPhone } from "@/components/icons"
+import { IcPlay, IcMail, IcPhone, IcLinkedin, IcInstagram, IcFacebook } from "@/components/icons"
 
 export default function SiteFooter() {
   return (
@@ -11,6 +11,12 @@ export default function SiteFooter() {
         <div>
           <div className="foot-brand"><Image src={logo} alt="OneAccounts logo" width={34} height={34} /><div><div className="name">OneAccounts</div><div className="by">by Siqbal</div></div></div>
           <p className="foot-desc">Cloud ERP for growing businesses and NGOs. Accounting, inventory, and payroll that stay clear, current, and calm. Plus property management for landlords and building managers.</p>
+          <div className="foot-social" aria-label="OneAccounts on social media">
+            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer me" aria-label="OneAccounts on LinkedIn"><IcLinkedin /></a>
+            <a href={SITE.instagram} target="_blank" rel="noopener noreferrer me" aria-label="OneAccounts on Instagram"><IcInstagram /></a>
+            <a href={SITE.facebook} target="_blank" rel="noopener noreferrer me" aria-label="OneAccounts on Facebook"><IcFacebook /></a>
+            <a href={SITE.youtube} target="_blank" rel="noopener noreferrer me" aria-label="OneAccounts on YouTube"><IcPlay /></a>
+          </div>
         </div>
         <div className="foot-col">
           <div className="foot-col-title">Products</div>

@@ -14,6 +14,9 @@ export const IcClock = () => (<svg {...S}><circle cx="12" cy="12" r="9" /><path 
 export const IcCoin = () => (<svg {...S}><circle cx="12" cy="12" r="9" /><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1.1 0-2-.4-2.5-1.2M12 6v2M12 16v2" /></svg>)
 export const IcMobile = () => (<svg {...S}><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18.5h2" /></svg>)
 export const IcChart = () => (<svg {...S}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>)
+export const IcLinkedin = () => (<svg {...S} fill="none"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10.5V16M8 7.8v.1M12 16v-5.5M12 13a2.6 2.6 0 0 1 5.2 0V16" /></svg>)
+export const IcInstagram = () => (<svg {...S} fill="none"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r=".5" /></svg>)
+export const IcFacebook = () => (<svg {...S} fill="none"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3H9v9h3v-9h2.5l.5-3H12V6.5c0-.3.2-.5.5-.5H15V3Z" /></svg>)
 export const Arc = () => (
   <svg className="arc-line" viewBox="0 0 600 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M10 8 C 190 48, 410 48, 590 8" stroke="url(#arcGrad)" strokeWidth="1.5" strokeLinecap="round" />
